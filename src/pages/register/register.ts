@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, Loading, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from "../login/login";
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from "../../shared/model/user";
 import { HomePage } from "../home/home";
+import { AuthProvider } from "../../providers/auth/auth";
 
 
 
@@ -21,10 +22,14 @@ import { HomePage } from "../home/home";
 })
 export class RegisterPage {
 
-  user: User = {} as User;
+  private user: User = {} as User;
+  private loading: Loading;
+
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
+              public authProvider: AuthProvider,
+              public loadingCtrl: LoadingController,
               public afAuth: AngularFireAuth) {
   }
 
@@ -42,24 +47,21 @@ export class RegisterPage {
       });
   }
 
-  async signUp(user: User) {
+  signUp(user: User) {
+    this.loading = this.loadingCtrl.create();
+    this.loading.present();
 
-    try {
-      const res = await this.afAuth.auth.createUserWithEmailAndPassword(
-        user.email,
-        user.password
-      );
-      if (res) this.navCtrl.setRoot(
-        HomePage,
-        {},
-        {
-          animate: true,
-          direction: 'forward'
-        });
-      console.log(res);
-
-    } catch (e) {
-      console.error(e);
-    }
+    this.authProvider.signupUser(user.email, user.password)
+      .then(() => {
+        this.loading.dismiss().then(() => {
+          this.navCtrl.setRoot(
+            HomePage,
+            {},
+            {
+              animate: true,
+              direction: 'forward'
+            });
+        })
+      })
   }
 }

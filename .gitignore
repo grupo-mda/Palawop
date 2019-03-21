@@ -36,3 +36,5 @@ UserInterfaceState.xcuserstate
 
 *.zip
 src/environments/
+
+.firebase/

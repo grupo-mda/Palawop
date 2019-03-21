@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, Loading, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { AuthProvider } from '../../providers/auth/auth';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { HomePage } from "../home/home";
 import { RegisterPage } from "../register/register";
@@ -19,35 +20,35 @@ import { User } from "../../shared/model/user";
 })
 export class LoginPage {
 
-  user: User = {} as User;
+  private user: User = {} as User;
+  private loading: Loading;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
+              public authProvider: AuthProvider,
+              public loadingCtrl: LoadingController,
               public afAuth: AngularFireAuth) {
   }
 
   ionViewDidLoad() {
   }
 
-  async login(user: User) {
-    try {
-      const res = await this.afAuth.auth.signInWithEmailAndPassword(
-        user.email,
-        user.password
-      );
-      if (res) this.navCtrl.setRoot(
-        HomePage,
-        {},
-        {
-          animate: true,
-          direction: 'forward'
-        });
-      console.log(res);
+  login(user: User) {
+    this.loading = this.loadingCtrl.create();
+    this.loading.present();
 
-    }
-    catch (e) {
-      console.error(e);
-    }
+    this.authProvider.loginUser(user.email, user.password)
+      .then(() => {
+        this.loading.dismiss().then(() => {
+          this.navCtrl.setRoot(
+            HomePage,
+            {},
+            {
+              animate: true,
+              direction: 'forward'
+            });
+        })
+      });
   }
 
   register() {
