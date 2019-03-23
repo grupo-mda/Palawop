@@ -29,10 +29,14 @@ export class HomePage {
 
     loader.present().then(() => {
       this.dbapi.getStock()
-        .subscribe(data => this.stock = data);
+        .subscribe(data => this.stock = data
+          
+        );
+        
       loader.dismiss();
 
     });
+    
   }
 /*
   signOut() {
@@ -46,7 +50,7 @@ export class HomePage {
         }));
   }
   */
-  itemTapped(product) {
+  itemTapped(product:any) {
     this.navCtrl.push(ProductDetailPage,product)
 
   }

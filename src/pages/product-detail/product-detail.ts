@@ -23,6 +23,7 @@ export class ProductDetailPage {
               public navParams: NavParams,
               public dbapi: DbApiService,
               public loadingController: LoadingController) {
+              this.product=navParams.data;
   }
 /*
   ionViewDidLoad() {

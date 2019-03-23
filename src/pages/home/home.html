@@ -6,14 +6,16 @@
 -->
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>Stock of products</ion-title>
+    <searchBar></searchBar>
   </ion-navbar>
+  <ion-title>Stock of products</ion-title>
+
 </ion-header>
 
 <ion-content padding>
   <ion-list>
     <button *ngFor="let item of stock" ion-item=""
-            (click)="itemTapped(item)">{{item?.name}}</button>
+            (click)="itemTapped(item.name)">{{item?.name}}</button>
   </ion-list>
 
   <button ion-button color="primary" (click)="goHome()">Home</button>

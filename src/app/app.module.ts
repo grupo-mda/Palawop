@@ -18,6 +18,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import {DbApiService} from '../shared/db-api.service';
 import {AngularFireDatabase} from "@angular/fire/database";
 import {ProductDetailPage} from '../pages/product-detail/product-detail';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {ProductDetailPage} from '../pages/product-detail/product-detail';
   ],
   imports: [
     BrowserModule,
+    ComponentsModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence()
