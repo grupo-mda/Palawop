@@ -15,6 +15,9 @@ import { LoginPage } from "../pages/login/login";
 import { RegisterPage } from "../pages/register/register";
 import { SplashPage } from "../pages/splash/splash";
 import { AuthProvider } from '../providers/auth/auth';
+import {DbApiService} from '../shared/db-api.service';
+import {AngularFireDatabase} from "@angular/fire/database";
+import {ProductDetailPage} from '../pages/product-detail/product-detail';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { AuthProvider } from '../providers/auth/auth';
     HomePage,
     SplashPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    ProductDetailPage
+
   ],
   imports: [
     BrowserModule,
@@ -37,14 +42,17 @@ import { AuthProvider } from '../providers/auth/auth';
     HomePage,
     SplashPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    ProductDetailPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AngularFireAuth,
-    AuthProvider
+    AuthProvider,
+    DbApiService,
+    AngularFireDatabase
   ]
 })
 export class AppModule {}
