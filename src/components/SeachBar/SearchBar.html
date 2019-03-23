@@ -1,0 +1,30 @@
+<!-- Generated template for the TitleComponent component -->
+<ion-row *ngIf="searchMode" align-items-center>
+  <ion-title>Palawop</ion-title> 
+  <button (click)="setSearchMode()" item>
+      <ion-icon name="search"></ion-icon>
+  </button>
+</ion-row>
+
+<ion-row *ngIf="!searchMode" >
+  <ion-col>
+      <ion-searchbar [(ngModel)]="searchQuery"
+      (onclick)="printList()"
+      (ionInput)="getItems($event)"
+      [showCancelButton]="shouldShowCancel"
+      [autocomplete]="on"
+      >
+      </ion-searchbar>
+  </ion-col>
+  <button item-right (click)="setSearchMode()">
+    X
+  </button>
+
+</ion-row>
+
+  <ion-list *ngIf="list">
+    <ion-item *ngFor="let item of items">
+      {{ item }}
+    </ion-item>
+  
+  </ion-list>
