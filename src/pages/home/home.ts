@@ -30,7 +30,6 @@ export class HomePage {
     loader.present().then(() => {
       this.dbapi.getStock()
         .subscribe(data => this.stock = data
-          
         );
         
       loader.dismiss();

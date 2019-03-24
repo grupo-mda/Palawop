@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {DbApiService} from '../../shared/db-api.service';
 import * as _ from 'lodash';
 import {LoadingController} from 'ionic-angular';
+
 /**
  * Generated class for the ProductDetailPage page.
  *
@@ -23,31 +24,32 @@ export class ProductDetailPage {
               public navParams: NavParams,
               public dbapi: DbApiService,
               public loadingController: LoadingController) {
-              this.product=navParams.data;
+    this.product = navParams.data;
   }
-/*
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProductDetailPage');
-  }
-  */
-  ionViewWillEnter(){
+
+  /*
+    ionViewDidLoad() {
+      console.log('ionViewDidLoad ProductDetailPage');
+    }
+    */
+  ionViewWillEnter() {
     console.log('ionViewWillEnter ProductDetailPage');
 
-    let loader = this.loadingController.create({
-      content: 'Accediendo a los datos',
-      spinner: 'dots'
-    });
-
-    loader.present().then(() => {
-      this.dbapi.getProductData(1)
-        .subscribe(data => {this.product = data;
-            return data;
-        }
-        );
-
-      loader.dismiss();
-
-    });
+    // let loader = this.loadingController.create({
+    //   content: 'Accediendo a los datos',
+    //   spinner: 'dots'
+    // });
+    //
+    // loader.present().then(() => {
+    //   this.dbapi.getProductData(this.product)
+    //     .subscribe(data => {
+    //         this.product = data;
+    //         return data;
+    //       }
+    //     );
+    //   loader.dismiss();
+    //
+    // });
   }
 
 

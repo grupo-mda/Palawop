@@ -15,7 +15,7 @@
 <ion-content padding>
   <ion-list>
     <button *ngFor="let item of stock" ion-item=""
-            (click)="itemTapped(item.name)">{{item?.name}}</button>
+            (click)="itemTapped(item)">{{item?.name}}</button>
   </ion-list>
 
   <button ion-button color="primary" (click)="goHome()">Home</button>
