@@ -24,6 +24,10 @@ export class ModalComponent {
     console.log('ionViewDidLoad ModalComponent');
     console.log(this.product)
 
+    const backdrop = document.querySelector('ion-backdrop');
+    backdrop.addEventListener('mouseup', () => this.closeModal());
+    const modal = document.querySelector('.scroll-content');
+    modal.addEventListener('touchend', () => this.closeModal());
   }
 
 }
