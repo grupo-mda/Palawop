@@ -16,6 +16,7 @@
   <ion-list>
     <button *ngFor="let item of stock" ion-item=""
             (click)="itemTapped(item)"
+            (press)="createModal(item)"
     >{{item?.name}}
     </button>
   </ion-list>

@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
-import {LoadingController, NavController} from 'ionic-angular';
+import {LoadingController, NavController, ModalController} from 'ionic-angular';
 import { LoginPage } from "../login/login";
 import { AuthProvider } from "../../providers/auth/auth";
 import {DbApiService} from '../../shared/db-api.service';
 import {ProductDetailPage} from '../product-detail/product-detail';
-
+import { ModalComponent} from '../../components/modal/modal';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  entryComponents: [
+    ModalComponent
+  ]
 })
 export class HomePage {
   private stock: any;
@@ -16,7 +19,8 @@ export class HomePage {
   constructor(public navCtrl: NavController,
               public authProvider: AuthProvider,
               public loadingController: LoadingController,
-              public dbapi: DbApiService) {
+              public dbapi: DbApiService,
+              public modalController: ModalController) {
 
   }
 
@@ -53,4 +57,22 @@ export class HomePage {
     this.navCtrl.push(ProductDetailPage,product)
 
   }
+ createModal(product:any){
+    /*const modal = await this.modalController.create({
+      component: ModalComponent,
+      componentProps: {value: product}
+    });
+    return await modal.present();*/
+    const myModal = this.modalController.create(
+      ModalComponent,
+      {product:product}
+    );
+    
+    
+    myModal.present();
+  
+  }
+
+
+
 }
