@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, Modal } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule } from 'angularfire2'
@@ -19,6 +19,7 @@ import {DbApiService} from '../shared/db-api.service';
 import {AngularFireDatabase} from "@angular/fire/database";
 import {ProductDetailPage} from '../pages/product-detail/product-detail';
 import { ComponentsModule } from '../components/components.module';
+import { ModalComponent } from '../components/modal/modal';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,7 @@ import { ComponentsModule } from '../components/components.module';
     SplashPage,
     LoginPage,
     RegisterPage,
-    ProductDetailPage
-
+    ProductDetailPage,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +45,8 @@ import { ComponentsModule } from '../components/components.module';
     SplashPage,
     LoginPage,
     RegisterPage,
-    ProductDetailPage
+    ProductDetailPage,
+    
   ],
   providers: [
     StatusBar,
@@ -54,7 +55,8 @@ import { ComponentsModule } from '../components/components.module';
     AngularFireAuth,
     AuthProvider,
     DbApiService,
-    AngularFireDatabase
+    AngularFireDatabase,
+    ComponentsModule
   ]
 })
 export class AppModule {}
