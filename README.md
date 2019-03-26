@@ -15,5 +15,8 @@ Este repositorio contendrá el código creado para el proyecto de MDA. La aplica
 - Framework: IONIC v3.0.
 - Método de desarrollo: SCRUM.
 - Base de datos: Firebase.
+- Contenedor: Heroku.
+
+## Desplegar
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://palawop.herokuapp.com/)
