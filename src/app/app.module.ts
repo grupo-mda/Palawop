@@ -26,6 +26,7 @@ import { TabsPage } from "../pages/tabs/tabs";
 import {ManageUsersPage} from "../pages/manage-users/manage-users";
 import {ManageStockPage} from "../pages/manage-stock/manage-stock";
 import { CategoryPage } from '../pages/category/category';
+import {EditStockPage} from '../pages/edit-stock/edit-stock';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CategoryPage } from '../pages/category/category';
     ProductDetailPage,
     ManageUsersPage,
     ManageStockPage,
-    CategoryPage
+    CategoryPage,
+    EditStockPage
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,8 @@ import { CategoryPage } from '../pages/category/category';
     ProductDetailPage,
     ManageUsersPage,
     ManageStockPage,
-    CategoryPage
+    CategoryPage,
+    EditStockPage
   ],
   providers: [
     StatusBar,

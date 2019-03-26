@@ -1,0 +1,44 @@
+<!--
+  Generated template for the EditStockPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{item.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <form [formGroup]="productForm" (ngSubmit)="saveData()">
+    <ion-list>
+      <ion-item>
+        <ion-icon name="logo-apple" item-start></ion-icon>
+        <ion-label stacked>Name:</ion-label>
+        <ion-input formControlName="name" type="text" placeholder="{{item.name}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="clipboard" item-start></ion-icon>
+        <ion-label stacked>Description:</ion-label>
+        <ion-input formControlName="description" type="text" placeholder="{{item.description}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="logo-reddit" item-start></ion-icon>
+        <ion-label stacked>Category:</ion-label>
+        <ion-input formControlName="category" type="text" placeholder="{{item.category}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="calendar" item-start></ion-icon>
+        <ion-label stacked>Date:</ion-label>
+        <ion-datetime formControlName="date" displayFormat="MM-DD-YYYY" placeholder="MM-DD-YYY"></ion-datetime>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button ion-button block type="submit" [disabled]="!productForm.valid">Guardar</button>
+    </div>
+  </form>
+
+</ion-content>

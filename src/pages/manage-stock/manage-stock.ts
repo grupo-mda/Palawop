@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {IonicPage, Loading, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {DbApiService} from "../../shared/db-api.service";
 import {ProductDetailPage} from '../product-detail/product-detail';
+import {ManageUsersPage} from '../manage-users/manage-users';
+import {EditStockPage} from '../edit-stock/edit-stock';
 
 /**
  * Generated class for the ManageStockPage page.
@@ -40,7 +42,8 @@ export class ManageStockPage {
           data.push({
             id: k,
             name: snapshot[k].name,
-            email: snapshot[k].email
+            description: snapshot[k].description,
+            category: snapshot[k].category
           })
         }
         this.stock_data = data;
@@ -58,5 +61,7 @@ export class ManageStockPage {
     this.navCtrl.push(ProductDetailPage,product)
 
   }
-
+  editItem(item) {
+    this.navCtrl.push(EditStockPage,item);
+  }
 }
