@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {IonicPage, Loading, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {DbApiService} from "../../shared/db-api.service";
+import {ProductDetailPage} from '../product-detail/product-detail';
 
 /**
  * Generated class for the ManageStockPage page.
@@ -52,6 +53,10 @@ export class ManageStockPage {
     ),1
     );
     this.dbapi.deleteItem(product);
+  }
+  itemTappedAdmin(product:any) {
+    this.navCtrl.push(ProductDetailPage,product)
+
   }
 
 }

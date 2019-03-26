@@ -15,8 +15,7 @@
   <ion-list inset>
     <div *ngFor="let item of stock_data" ion-item="">
       <button
-        (click)="itemTapped(item)"
-        (press)="createModal(item)"
+        (click)="itemTappedAdmin(item)"
       >{{item?.name}}
       </button>
         <button (click)="itemTapped(item)" outline >
@@ -27,9 +26,4 @@
         </button>
     </div>
   </ion-list>
-<!--  <ion-list inset>
-    <button id={{item_data.id}} ion-item *ngFor="let item_data of stock_data">
-      {{item_data.name}}
-    </button>
-  </ion-list>-->
 </ion-content>
