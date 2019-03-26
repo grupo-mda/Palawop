@@ -59,11 +59,6 @@ export class HomePage {
 
   }
  createModal(product:any){
-    /*const modal = await this.modalController.create({
-      component: ModalComponent,
-      componentProps: {value: product}
-    });
-    return await modal.present();*/
     const myModal = this.modalController.create(
       ModalComponent,
       {product:product}

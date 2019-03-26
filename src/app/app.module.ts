@@ -20,6 +20,7 @@ import {AngularFireDatabase} from "@angular/fire/database";
 import {ProductDetailPage} from '../pages/product-detail/product-detail';
 import { ComponentsModule } from '../components/components.module';
 import { ModalComponent } from '../components/modal/modal';
+import { CategoryPage } from '../pages/category/category';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ModalComponent } from '../components/modal/modal';
     LoginPage,
     RegisterPage,
     ProductDetailPage,
+    CategoryPage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,7 @@ import { ModalComponent } from '../components/modal/modal';
     LoginPage,
     RegisterPage,
     ProductDetailPage,
-    
+    CategoryPage
   ],
   providers: [
     StatusBar,

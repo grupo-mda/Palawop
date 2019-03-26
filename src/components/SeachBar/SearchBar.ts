@@ -17,6 +17,7 @@ export class SearchBarComponent {
   itemsConst:string[];
   list:boolean=false;
   searchMode:boolean=true;
+  
   constructor() {
     this.itemsConst=this.items;
   }
