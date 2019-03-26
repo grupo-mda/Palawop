@@ -62,12 +62,8 @@ export class HomePage {
       ModalComponent,
       {product:product}
     );
-    
-    
+
     myModal.present();
-  
   }
-
-
 
 }

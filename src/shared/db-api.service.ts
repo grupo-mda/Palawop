@@ -11,11 +11,12 @@ export class DbApiService{
 
   }
   getStock(): Observable<any> {
-    return this.fdb.list('/products').valueChanges();
+    return this.fdb.list('/products/').valueChanges();
   }
 
-  getProductData(productId):Observable<any> {
-    return this.fdb.object(`/products/${productId}`).valueChanges()
+
+  deleteItem(product){
+    return this.fdb.list(`/products/${product.id}`).remove();
   }
 
   getProductByCategory(category):Observable<any>{

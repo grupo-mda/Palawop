@@ -11,9 +11,25 @@
 </ion-header>
 
 <ion-content padding>
+
   <ion-list inset>
+    <div *ngFor="let item of stock_data" ion-item="">
+      <button
+        (click)="itemTapped(item)"
+        (press)="createModal(item)"
+      >{{item?.name}}
+      </button>
+        <button (click)="itemTapped(item)" outline >
+          <ion-icon name="create" color="success"></ion-icon>
+        </button >
+        <button (click)="itemDelete(item)" outline >
+          <ion-icon name="trash" color="danger" outline></ion-icon>
+        </button>
+    </div>
+  </ion-list>
+<!--  <ion-list inset>
     <button id={{item_data.id}} ion-item *ngFor="let item_data of stock_data">
       {{item_data.name}}
     </button>
-  </ion-list>
+  </ion-list>-->
 </ion-content>

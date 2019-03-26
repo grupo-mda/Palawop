@@ -39,7 +39,7 @@ import { CategoryPage } from '../pages/category/category';
     AdminToolsPage,
     ProductDetailPage,
     ManageUsersPage,
-    ManageStockPage
+    ManageStockPage,
     CategoryPage
   ],
   imports: [
@@ -62,7 +62,7 @@ import { CategoryPage } from '../pages/category/category';
     AdminToolsPage,
     ProductDetailPage,
     ManageUsersPage,
-    ManageStockPage
+    ManageStockPage,
     CategoryPage
   ],
   providers: [

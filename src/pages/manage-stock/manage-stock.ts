@@ -46,5 +46,12 @@ export class ManageStockPage {
       })
       .then(() => this.loading.dismiss());
   }
+  itemDelete(product){
+    this.stock_data.splice(this.stock_data.findIndex(
+      (productId) => {return productId.id == product.id }
+    ),1
+    );
+    this.dbapi.deleteItem(product);
+  }
 
 }
