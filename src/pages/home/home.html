@@ -8,10 +8,10 @@
   <ion-navbar color="primary">
     <searchBar></searchBar>
   </ion-navbar>
+    <category-nav></category-nav>
   <ion-title>Stock of products</ion-title>
 
 </ion-header>
-
 <ion-content padding>
   <ion-list>
     <button *ngFor="let item of stock" ion-item=""
@@ -23,3 +23,4 @@
 
   <button ion-button color="primary" (click)="goHome()">Home</button>
 </ion-content>
+

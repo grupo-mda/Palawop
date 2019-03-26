@@ -25,6 +25,7 @@ import { AdminToolsPage } from "../pages/admin-tools/admin-tools";
 import { TabsPage } from "../pages/tabs/tabs";
 import {ManageUsersPage} from "../pages/manage-users/manage-users";
 import {ManageStockPage} from "../pages/manage-stock/manage-stock";
+import { CategoryPage } from '../pages/category/category';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {ManageStockPage} from "../pages/manage-stock/manage-stock";
     ProductDetailPage,
     ManageUsersPage,
     ManageStockPage
+    CategoryPage
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,7 @@ import {ManageStockPage} from "../pages/manage-stock/manage-stock";
     ProductDetailPage,
     ManageUsersPage,
     ManageStockPage
+    CategoryPage
   ],
   providers: [
     StatusBar,
