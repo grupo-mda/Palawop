@@ -45,9 +45,9 @@
     "rxjs-compat": "~6.3.3",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.29",
-    "node": "7.6.0"    
+    "node": "7.6.0"
   },
-  "devDependencies": { 
+  "devDependencies": {
     "@ionic/app-scripts": "3.2.1",
     "typescript": "~2.6.2"
   },

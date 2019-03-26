@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ProductDetailPage} from '../product-detail/product-detail';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {DbApiService} from '../../shared/db-api.service';
+import {ManageStockPage} from '../manage-stock/manage-stock';
 
 /**
  * Generated class for the EditStockPage page.
@@ -20,7 +22,8 @@ export class EditStockPage {
   productForm: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-  public formBuilder: FormBuilder) {
+  public formBuilder: FormBuilder,
+  public dbapi: DbApiService) {
     this.item = navParams.data;
     this.productForm = this.createMyForm();
   }
@@ -37,6 +40,15 @@ export class EditStockPage {
     });
   }
   saveData(){
+  this.dbapi.pushItem(this.productForm.value.name,
+    this.productForm.value.description,
+    this.productForm.value.category,
+    this.productForm.value.date,
+    this.item.id
+  );
+  }
+  backToManage() {
+    this.navCtrl.push(ManageStockPage)
 
   }
 }

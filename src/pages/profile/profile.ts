@@ -32,6 +32,12 @@ export class ProfilePage {
     console.log('ionViewDidLoad ProfilePage');
   }
 
+  // TODO, ajustes de perfil
+  modifyProfile(){
+    let userData = this.dbapi.getUserData();
+    console.log(userData);
+  }
+
   signOut() {
     this.authProvider.logoutUser()
       .then(() =>

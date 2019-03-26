@@ -18,17 +18,17 @@
       <ion-item>
         <ion-icon name="logo-apple" item-start></ion-icon>
         <ion-label stacked>Name:</ion-label>
-        <ion-input formControlName="name" type="text" placeholder="{{item.name}}"></ion-input>
+        <ion-input formControlName="name" type="text" value="{{item.name}}"></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon name="clipboard" item-start></ion-icon>
         <ion-label stacked>Description:</ion-label>
-        <ion-input formControlName="description" type="text" placeholder="{{item.description}}"></ion-input>
+        <ion-input formControlName="description" type="text" value="{{item.description}}"></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon name="logo-reddit" item-start></ion-icon>
         <ion-label stacked>Category:</ion-label>
-        <ion-input formControlName="category" type="text" placeholder="{{item.category}}"></ion-input>
+        <ion-input formControlName="category" type="text" value="{{item.category}}"></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon name="calendar" item-start></ion-icon>
@@ -37,7 +37,7 @@
       </ion-item>
     </ion-list>
     <div padding>
-      <button ion-button block type="submit" [disabled]="!productForm.valid">Guardar</button>
+      <button ion-button block type="submit" [disabled]="!productForm.valid" (click)="backToManage()">Guardar</button>
     </div>
   </form>
 

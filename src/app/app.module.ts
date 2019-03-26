@@ -66,7 +66,7 @@ import {EditStockPage} from '../pages/edit-stock/edit-stock';
     ManageUsersPage,
     ManageStockPage,
     CategoryPage,
-    EditStockPage
+    EditStockPage,
   ],
   providers: [
     StatusBar,

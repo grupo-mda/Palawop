@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from "@angular/fire/database";
 import {Observable} from 'rxjs';
 import * as firebase from "firebase";
+import {getLocaleTimeFormat} from '@angular/common';
 
 @Injectable()
 export class DbApiService{
@@ -44,6 +45,29 @@ export class DbApiService{
       .ref(`/${child}`)
       .once('value')
       .then((snapshot) => { return snapshot.val() });
+  }
+  pushItem(name,description,category,date,id){
+    firebase
+      .database()
+      .ref()
+      .child("products")
+      .child(id)
+      .set({
+        id: id,
+        category: category,
+        name: name,
+        description: description,
+        date : date,
+        vendor : firebase.auth().currentUser.uid
+      })
+  }
+
+  getUserData(){
+    let userId = firebase.auth().currentUser.uid;
+    return firebase.database()
+      .ref(`/users/${userId}`)
+      .once('value')
+      .then((snapshot) => { return snapshot.val()});
   }
 }
 

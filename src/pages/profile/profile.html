@@ -30,6 +30,12 @@
   </div>
   <ion-fab center middle>
     <button
+      (click)="modifyProfile()"
+      ion-fab
+      color="dark">
+      <ion-icon name="build"></ion-icon>
+    </button>
+    <button
       (click)="signOut()"
       ion-fab
       color="dark">
