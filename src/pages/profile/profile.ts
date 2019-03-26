@@ -3,6 +3,9 @@ import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DbApiService } from "../../shared/db-api.service";
 import { AuthProvider } from "../../providers/auth/auth";
 import { LoginPage } from "../login/login";
+import {ManageStockPage} from '../manage-stock/manage-stock';
+import {ManageProfilePage} from '../manage-profile/manage-profile';
+import {ManageProfilePageModule} from '../manage-profile/manage-profile.module';
 
 /**
  * Generated class for the ProfilePage page.
@@ -32,10 +35,8 @@ export class ProfilePage {
     console.log('ionViewDidLoad ProfilePage');
   }
 
-  // TODO, ajustes de perfil
-  modifyProfile(){
-    let userData = this.dbapi.getUserData();
-    console.log(userData);
+  modifyProfile(user){
+    this.navCtrl.push(ManageProfilePage,user);
   }
 
   signOut() {

@@ -69,5 +69,18 @@ export class DbApiService{
       .once('value')
       .then((snapshot) => { return snapshot.val()});
   }
+  pushUserData(name,lastName,email,admin){
+   firebase
+      .database()
+      .ref()
+      .child("users")
+      .child(firebase.auth().currentUser.uid)
+      .set({
+        lastName: lastName,
+        name: name,
+        email: email,
+        admin : admin
+      })
+  }
 }
 

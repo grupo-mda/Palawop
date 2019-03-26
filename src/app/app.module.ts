@@ -27,6 +27,7 @@ import {ManageUsersPage} from "../pages/manage-users/manage-users";
 import {ManageStockPage} from "../pages/manage-stock/manage-stock";
 import { CategoryPage } from '../pages/category/category';
 import {EditStockPage} from '../pages/edit-stock/edit-stock';
+import {ManageProfilePage} from '../pages/manage-profile/manage-profile';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {EditStockPage} from '../pages/edit-stock/edit-stock';
     ManageUsersPage,
     ManageStockPage,
     CategoryPage,
-    EditStockPage
+    EditStockPage,
+    ManageProfilePage
   ],
   imports: [
     BrowserModule,
@@ -67,6 +69,7 @@ import {EditStockPage} from '../pages/edit-stock/edit-stock';
     ManageStockPage,
     CategoryPage,
     EditStockPage,
+    ManageProfilePage
   ],
   providers: [
     StatusBar,
