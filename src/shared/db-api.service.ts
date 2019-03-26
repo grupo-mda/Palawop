@@ -82,5 +82,10 @@ export class DbApiService{
         admin : admin
       })
   }
+
+  deleteUser(user_data: any) {
+    this.fdb.list(`/users/${user_data.id}`).remove();
+
+  }
 }
 

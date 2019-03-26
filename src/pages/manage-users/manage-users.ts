@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {IonicPage, Loading, LoadingController, NavController, NavParams} from 'ionic-angular';
+import { AlertController, IonicPage, Loading, LoadingController, NavController, NavParams} from 'ionic-angular';
 import { DbApiService } from "../../shared/db-api.service";
+import {ManageProfilePage} from "../manage-profile/manage-profile";
 
 
 /**
@@ -23,7 +24,8 @@ export class ManageUsersPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public loadingCtrl: LoadingController,
-              public dbapi: DbApiService) {
+              public dbapi: DbApiService,
+              public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -52,4 +54,34 @@ export class ManageUsersPage {
 
   }
 
+  editItem(item: any) {
+    this.navCtrl.push(ManageProfilePage, item);
+  }
+
+  itemDelete(user_data: any) {
+    const confirm = this.alertCtrl.create({
+      title: 'r u sure?',
+      message: 'This is 4eva',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            this.users_data.splice(this.users_data.findIndex(
+              (userId) => {return userId.id == user_data.id }
+              ),1
+            );
+            this.dbapi.deleteUser(user_data);
+            console.log('Agree clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
 }

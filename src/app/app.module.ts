@@ -29,6 +29,8 @@ import { CategoryPage } from '../pages/category/category';
 import {EditStockPage} from '../pages/edit-stock/edit-stock';
 import {ManageProfilePage} from '../pages/manage-profile/manage-profile';
 
+// import * as admin from 'firebase-admin';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -51,6 +53,7 @@ import {ManageProfilePage} from '../pages/manage-profile/manage-profile';
     ComponentsModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(environment.firebase),
+
     AngularFirestoreModule.enablePersistence()
 
   ],

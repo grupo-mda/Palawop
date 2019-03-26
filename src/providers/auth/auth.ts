@@ -34,4 +34,14 @@ export class AuthProvider {
   logoutUser(): Promise<void> {
     return firebase.auth().signOut();
   }
+
+  // deleteUser(user): Promise<any> {
+  //   return firebase.auth().deleteUser(user.id)
+  //     .then(function() {
+  //       console.log("Successfully deleted user");
+  //     })
+  //     .catch(function(error) {
+  //       console.log("Error deleting user:", error);
+  //     });
+  // }
 }
