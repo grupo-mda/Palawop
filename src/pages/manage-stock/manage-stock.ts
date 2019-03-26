@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {IonicPage, Loading, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {DbApiService} from "../../shared/db-api.service";
+import {ProductDetailPage} from '../product-detail/product-detail';
 
 /**
  * Generated class for the ManageStockPage page.
@@ -45,6 +46,17 @@ export class ManageStockPage {
         this.stock_data = data;
       })
       .then(() => this.loading.dismiss());
+  }
+  itemDelete(product){
+    this.stock_data.splice(this.stock_data.findIndex(
+      (productId) => {return productId.id == product.id }
+    ),1
+    );
+    this.dbapi.deleteItem(product);
+  }
+  itemTappedAdmin(product:any) {
+    this.navCtrl.push(ProductDetailPage,product)
+
   }
 
 }
