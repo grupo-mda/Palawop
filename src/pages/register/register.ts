@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, Loading, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { App, IonicPage, Loading, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from "../login/login";
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from "../../shared/model/user";
 import { HomePage } from "../home/home";
 import { AuthProvider } from "../../providers/auth/auth";
+import {DbApiService} from "../../shared/db-api.service";
+import {TabsPage} from "../tabs/tabs";
 
 
 /**
@@ -35,7 +37,8 @@ export class RegisterPage {
               public navParams: NavParams,
               public authProvider: AuthProvider,
               public loadingCtrl: LoadingController,
-              public afAuth: AngularFireAuth) {
+              public afAuth: AngularFireAuth,
+              public app: App) {
   }
 
   ionViewDidLoad() {
@@ -70,8 +73,8 @@ export class RegisterPage {
       this.authProvider.signupUser(user.email, user.password)
         .then(
           (user) => {
-            this.navCtrl.setRoot(
-              HomePage,
+            this.app.getRootNav().setRoot(
+              TabsPage,
               {},
               {
                 animate: true,

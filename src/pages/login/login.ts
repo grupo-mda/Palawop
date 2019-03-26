@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, Loading, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { App, IonicPage, Loading, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { HomePage } from "../home/home";
 import { RegisterPage } from "../register/register";
 import { User } from "../../shared/model/user";
+import {DbApiService} from "../../shared/db-api.service";
+import {TabsPage} from "../tabs/tabs";
 
 /**
  * Generated class for the LoginPage page.
@@ -34,26 +36,12 @@ export class LoginPage {
               public navParams: NavParams,
               public authProvider: AuthProvider,
               public loadingCtrl: LoadingController,
-              public afAuth: AngularFireAuth) {
+              public afAuth: AngularFireAuth,
+              public app: App) {
     this.tabBarElement = document.querySelector('#tabs ion-tabbar-section');
   }
 
-  ionViewDidEnter() {
-    console.log("aaaaaa")
-    // this.tabBarElement.style.display = 'none';
-
-  }
-
-  ionViewWillLeave() {
-    console.log("bbbbb")
-
-    // this.tabBarElement.style.display = 'block';
-
-  }
-
-
   ionViewDidLoad() {
-    console.log("ccccccccccc")
   }
 
   login(user: User) {
@@ -69,8 +57,8 @@ export class LoginPage {
 
       this.authProvider.loginUser(user.email, user.password)
         .then(() => {
-          this.navCtrl.setRoot(
-            HomePage,
+          this.app.getRootNav().setRoot(
+            TabsPage,
             {},
             {
               animate: true,

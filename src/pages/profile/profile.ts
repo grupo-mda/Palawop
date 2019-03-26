@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DbApiService } from "../../shared/db-api.service";
 import { AuthProvider } from "../../providers/auth/auth";
 import { LoginPage } from "../login/login";
@@ -22,7 +22,8 @@ export class ProfilePage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public authProvider: AuthProvider,
-              public dbapi: DbApiService) {
+              public dbapi: DbApiService,
+              public app: App) {
     this.dbapi.getCurrentUser()
       .then((value) => this.user = value);
   }
@@ -34,7 +35,7 @@ export class ProfilePage {
   signOut() {
     this.authProvider.logoutUser()
       .then(() =>
-        this.navCtrl.setRoot(
+        this.app.getRootNav().setRoot(
         LoginPage,
         {},
         {
