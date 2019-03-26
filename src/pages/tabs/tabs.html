@@ -1,0 +1,6 @@
+<ion-tabs id="tabs">
+  <ion-tab [root]="homeTab" tabTitle="Home" tabIcon="home"></ion-tab>
+  <ion-tab [root]="profileTab" tabTitle="Profile" tabIcon="person"></ion-tab>
+  <ion-tab *ngIf="isAdmin" [root]="adminTab" tabTitle="Admin" tabIcon="settings"></ion-tab>
+</ion-tabs>
+

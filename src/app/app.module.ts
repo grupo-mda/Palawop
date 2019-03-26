@@ -20,6 +20,11 @@ import {AngularFireDatabase} from "@angular/fire/database";
 import {ProductDetailPage} from '../pages/product-detail/product-detail';
 import { ComponentsModule } from '../components/components.module';
 import { ModalComponent } from '../components/modal/modal';
+import { ProfilePage } from "../pages/profile/profile";
+import { AdminToolsPage } from "../pages/admin-tools/admin-tools";
+import { TabsPage } from "../pages/tabs/tabs";
+import {ManageUsersPage} from "../pages/manage-users/manage-users";
+import {ManageStockPage} from "../pages/manage-stock/manage-stock";
 
 @NgModule({
   declarations: [
@@ -28,7 +33,12 @@ import { ModalComponent } from '../components/modal/modal';
     SplashPage,
     LoginPage,
     RegisterPage,
+    ProfilePage,
+    TabsPage,
+    AdminToolsPage,
     ProductDetailPage,
+    ManageUsersPage,
+    ManageStockPage
   ],
   imports: [
     BrowserModule,
@@ -45,8 +55,12 @@ import { ModalComponent } from '../components/modal/modal';
     SplashPage,
     LoginPage,
     RegisterPage,
+    ProfilePage,
+    TabsPage,
+    AdminToolsPage,
     ProductDetailPage,
-    
+    ManageUsersPage,
+    ManageStockPage
   ],
   providers: [
     StatusBar,

@@ -28,15 +28,32 @@ export class LoginPage {
   email_error_msg: string;
   pass_error_msg : string;
   cPass_error_msg: string;
+  private tabBarElement: Element;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public authProvider: AuthProvider,
               public loadingCtrl: LoadingController,
               public afAuth: AngularFireAuth) {
+    this.tabBarElement = document.querySelector('#tabs ion-tabbar-section');
   }
 
+  ionViewDidEnter() {
+    console.log("aaaaaa")
+    // this.tabBarElement.style.display = 'none';
+
+  }
+
+  ionViewWillLeave() {
+    console.log("bbbbb")
+
+    // this.tabBarElement.style.display = 'block';
+
+  }
+
+
   ionViewDidLoad() {
+    console.log("ccccccccccc")
   }
 
   login(user: User) {
