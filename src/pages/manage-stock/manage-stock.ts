@@ -4,6 +4,7 @@ import {DbApiService} from "../../shared/db-api.service";
 import {ProductDetailPage} from '../product-detail/product-detail';
 import {ManageUsersPage} from '../manage-users/manage-users';
 import {EditStockPage} from '../edit-stock/edit-stock';
+import {NewStockPage} from "../new-stock/new-stock";
 
 /**
  * Generated class for the ManageStockPage page.
@@ -63,5 +64,9 @@ export class ManageStockPage {
   }
   editItem(item) {
     this.navCtrl.push(EditStockPage,item);
+  }
+
+  uploadItem() {
+    this.navCtrl.push(NewStockPage);
   }
 }

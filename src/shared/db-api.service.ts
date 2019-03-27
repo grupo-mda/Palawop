@@ -46,6 +46,22 @@ export class DbApiService{
       .once('value')
       .then((snapshot) => { return snapshot.val() });
   }
+
+  uploadItem(name: any, description: any, category: any, date: any) {
+    let key = firebase.database().ref().child('products').push().key;
+    firebase
+      .database()
+      .ref()
+      .child('products')
+      .child(key)
+      .set({
+        name: name,
+        description: description,
+        category: category,
+        date: date
+      });
+  }
+
   pushItem(name,description,category,date,id){
     firebase
       .database()

@@ -13,17 +13,20 @@
 <ion-content padding>
 
   <ion-list inset>
+    <button (click)="uploadItem()" outline >
+      <ion-icon name="add-circle" color="success" outline></ion-icon>
+    </button>
     <div *ngFor="let item of stock_data" ion-item="">
       <button
         (click)="itemTappedAdmin(item)"
       >{{item?.name}}
       </button>
-        <button (click)="editItem(item)" outline >
-          <ion-icon name="create" color="success"></ion-icon>
-        </button >
-        <button (click)="itemDelete(item)" outline >
-          <ion-icon name="trash" color="danger" outline></ion-icon>
-        </button>
+      <button (click)="editItem(item)" outline >
+        <ion-icon name="create" color="success"></ion-icon>
+      </button >
+      <button (click)="itemDelete(item)" outline >
+        <ion-icon name="trash" color="danger" outline></ion-icon>
+      </button>
     </div>
   </ion-list>
 </ion-content>
