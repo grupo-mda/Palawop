@@ -113,11 +113,11 @@ export class RegisterPage {
         break;
       case "empty-password":
         this.pass_error = true;
-        this.pass_error_msg = 'Maybe you need a password...';
+        this.pass_error_msg = 'Maybe you must to use a password...';
         break;
       case "auth/weak-password":
         this.pass_error = true;
-        this.pass_error_msg = 'Maybe you need a LONGER password...';
+        this.pass_error_msg = 'Maybe you must to use a LONGER password...';
         break;
       case "empty-cPassword":
         this.cPass_error = true;
