@@ -48,7 +48,7 @@ export class EditStockPage {
   );
   }
   backToManage() {
-    this.navCtrl.push(ManageStockPage)
+    this.navCtrl.pop();
 
   }
 }

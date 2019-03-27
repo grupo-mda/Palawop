@@ -49,7 +49,7 @@ export class NewStockPage {
   }
 
   backToManage(){
-    this.navCtrl.push(ManageStockPage);
+    this.navCtrl.pop();
   }
 
 }
