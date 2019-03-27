@@ -58,7 +58,8 @@ export class DbApiService{
         name: name,
         description: description,
         category: category,
-        date: date
+        date: date,
+        vendor:firebase.auth().currentUser.uid
       });
   }
 
@@ -98,10 +99,18 @@ export class DbApiService{
         admin : admin
       })
   }
-
   deleteUser(user_data: any) {
     this.fdb.list(`/users/${user_data.id}`).remove();
 
   }
-}
 
+  getStockOfUser() {
+    return firebase.database()
+      .ref('products')
+      .orderByChild('vendor')
+      .equalTo(firebase.auth().currentUser.uid)
+      .once('value')
+      .then((snapshot) => { return snapshot.val()});
+  }
+
+}

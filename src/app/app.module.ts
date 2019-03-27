@@ -29,6 +29,7 @@ import { CategoryPage } from '../pages/category/category';
 import {EditStockPage} from '../pages/edit-stock/edit-stock';
 import {ManageProfilePage} from '../pages/manage-profile/manage-profile';
 import {NewStockPage} from "../pages/new-stock/new-stock";
+import {ManageUserStockPage} from '../pages/manage-user-stock/manage-user-stock';
 
 // import * as admin from 'firebase-admin';
 
@@ -48,7 +49,8 @@ import {NewStockPage} from "../pages/new-stock/new-stock";
     CategoryPage,
     EditStockPage,
     ManageProfilePage,
-    NewStockPage
+    NewStockPage,
+    ManageUserStockPage
   ],
   imports: [
     BrowserModule,
@@ -75,7 +77,8 @@ import {NewStockPage} from "../pages/new-stock/new-stock";
     CategoryPage,
     EditStockPage,
     ManageProfilePage,
-    NewStockPage
+    NewStockPage,
+    ManageUserStockPage
   ],
   providers: [
     StatusBar,

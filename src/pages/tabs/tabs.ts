@@ -4,6 +4,7 @@ import { HomePage } from "../home/home";
 import { AdminToolsPage } from "../admin-tools/admin-tools";
 import { ProfilePage } from "../profile/profile";
 import { DbApiService } from "../../shared/db-api.service";
+import {ManageUserStockPage} from '../manage-user-stock/manage-user-stock';
 
 /**
  * Generated class for the TabsPage page.
@@ -21,6 +22,7 @@ export class TabsPage {
   homeTab    = HomePage;
   adminTab   = AdminToolsPage;
   profileTab = ProfilePage;
+  manage_user_stock = ManageUserStockPage;
   isAdmin    = false;
 
   constructor(public navCtrl: NavController,
