@@ -28,13 +28,13 @@ export class TabsPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public dbapi: DbApiService) {
-    this.dbapi.getCurrentUser()
-      .then((value) => this.isAdmin = value.admin);
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TabsPage');
+    this.dbapi.getCurrentUser()
+      .then((value) => this.isAdmin = value.admin);
   }
 
 }

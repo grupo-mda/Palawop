@@ -86,6 +86,7 @@ export class DbApiService{
       .once('value')
       .then((snapshot) => { return snapshot.val()});
   }
+
   pushUserData(name,lastName,email,admin){
    firebase
       .database()
@@ -101,7 +102,7 @@ export class DbApiService{
   }
   deleteUser(user_data: any) {
     this.fdb.list(`/users/${user_data.id}`).remove();
-
+    // firebase.auth().currentUser.delete();
   }
 
   getStockOfUser() {

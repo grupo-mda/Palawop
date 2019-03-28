@@ -30,7 +30,6 @@ export class LoginPage {
   email_error_msg: string;
   pass_error_msg : string;
   cPass_error_msg: string;
-  private tabBarElement: Element;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -38,7 +37,6 @@ export class LoginPage {
               public loadingCtrl: LoadingController,
               public afAuth: AngularFireAuth,
               public app: App) {
-    this.tabBarElement = document.querySelector('#tabs ion-tabbar-section');
   }
 
   ionViewDidLoad() {
