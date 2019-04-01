@@ -13,7 +13,7 @@
 <ion-content padding>
     <ion-list>
         <button *ngFor="let item of productCategory" ion-item=""
-                (click)="itemTapped(item.name)"
+                (click)="itemTapped(item)"
                 (press)="createModal(item)"
                 >{{item?.name}}
         </button>

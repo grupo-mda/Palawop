@@ -28,7 +28,18 @@
       <ion-item>
         <ion-icon name="logo-reddit" item-start></ion-icon>
         <ion-label stacked>Category:</ion-label>
-        <ion-input formControlName="category" type="text" value="{{item.category}}"></ion-input>
+               <!--
+         <ion-select formControlName="category" [(ngModel)]=item.category >
+          <ion-option value="{{cat?.name}}">
+            {{cat?.name}}
+          </ion-option>
+        </ion-select>
+       -->
+        <ion-select formControlName="category" [(ngModel)]=item.category>
+          <ion-option *ngFor="let cat of categories">
+            {{cat?.name}}
+          </ion-option>
+        </ion-select>
       </ion-item>
       <ion-item>
         <ion-icon name="calendar" item-start></ion-icon>

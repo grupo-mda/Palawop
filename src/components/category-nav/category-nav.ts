@@ -33,9 +33,7 @@ export class CategoryNavComponent {
     loader.present().then(() => {
       this.dbapi.getCategories()
         .subscribe(data => {
-          console.log(data);
           this.categories = data
-
         });
         
       loader.dismiss();
