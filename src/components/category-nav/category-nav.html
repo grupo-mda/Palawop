@@ -1,6 +1,6 @@
 <!-- Generated template for the CategoryNavComponent component -->
 <ion-slides (ionSlideDidChange)="slideChanged()" >
-      <button *ngFor="let item of categories" (click)=categoryTapped($event,item) >
+      <button ion-button *ngFor="let item of categories" (click)=categoryTapped($event,item) >
           <ion-icon name="{{item?.name}}"></ion-icon>
       </button>
 </ion-slides>

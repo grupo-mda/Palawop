@@ -153,4 +153,8 @@ export class HomePage {
         .present();
     }
   }
+
+  scrollFunction(event: any) {
+    console.log(event.scrollTop)
+  }
 }

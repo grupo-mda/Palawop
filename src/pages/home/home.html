@@ -9,12 +9,11 @@
     <searchBar></searchBar>
   </ion-navbar>
   <category-nav></category-nav>
-  <ion-title>Stock of products</ion-title>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding (ionScroll)="scrollFunction($event)">
 
   <ion-grid>
     <div *ngFor="let row of stock">

@@ -36,7 +36,7 @@ export class NewStockPage {
     loader.present().then(() => {
       this.dbapi.getCategories()
         .subscribe(data => {
-          this.categories = data
+          this.categories = data;
           console.log(this.categories);
         });
         

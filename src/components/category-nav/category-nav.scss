@@ -1,12 +1,19 @@
 category-nav {
-    ion-slides{
-        width: 100%;
-        overflow-x: scroll;
- 
-        button{
-             width: 25%;
-        }
+  ion-slides {
+    width: 100%;
+    overflow-x: scroll;
 
+    button {
+      border-radius: 50% !important;
+      height: 50px !important;
+      width: 50px !important;
     }
+
+    .swiper-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+  }
 
 }
