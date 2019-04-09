@@ -38,7 +38,7 @@ export class CategoryPage {
       this.dbapi.getStock()
         .subscribe(data => {
           for ( let i in data) {
-            if(data[i].category ==this.category.name){
+            if(data[i].category ==this.category.name|| data[i].category.includes(this.category.name)){
               this.productCategory.push(data[i]);
               console.log(this.productCategory);
             }

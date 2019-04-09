@@ -61,7 +61,7 @@ export class NewStockPage {
   saveData(){
       this.dbapi.uploadItem(this.productForm.value.name,
         this.productForm.value.description,
-        this.productForm.value.category.trim(),
+        this.productForm.value.category.toString().split("\n").join("").replace(/\s/g, "").split(","),
         this.productForm.value.date
       );
   }

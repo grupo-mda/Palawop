@@ -1,13 +1,37 @@
 searchBar {
-    ion-icon{
-        font-size: 50px;
+  $icon-color: #00FEDE;
+  $transition: all .5s ease;
+
+  ion-row{
+    button{
+      border-radius: 25px;
     }
-    ion-row{
-        ion-col{
-            ion-searchbar{
-                border-radius: 25px;
-            }
-        }
+  }
+  ion-row{
+    ion-col{
+      transition: all 1s;
+      ion-search{
+        position: relative;
+        top: 50%;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+        background: white;
+        box-sizing: border-box;
+        border-radius: 25px;
+        border: 4px solid white;
+        padding: 5px;
+      }
+      button{
+        background: #07051a;
+        color: white;
+      }
     }
 
+  }
+  ion-list{
+    ion-item{
+
+    }
+  }
 }

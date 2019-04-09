@@ -1,7 +1,7 @@
 <!-- Generated template for the TitleComponent component -->
 <ion-row *ngIf="searchMode" align-items-center>
   <ion-title>Palawop</ion-title> 
-  <button (click)="setSearchMode()" item>
+  <button ion-button (click)="setSearchMode()" item>
       <ion-icon name="search"></ion-icon>
   </button>
 </ion-row>
@@ -16,7 +16,7 @@
       >
       </ion-searchbar>
   </ion-col>
-  <button item-right (click)="setSearchMode()">
+  <button ion-button item-right (click)="setSearchMode()">
     X
   </button>
 
