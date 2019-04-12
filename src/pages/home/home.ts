@@ -24,6 +24,9 @@ export class HomePage {
   chatButton_1 = false;
   doVibration = false;
   vibrationDone = true;
+  private lastScroll = 0;
+  private currentScroll = 0;
+  public hide = false;
 
   constructor(public navCtrl: NavController,
               public authProvider: AuthProvider,
@@ -155,6 +158,9 @@ export class HomePage {
   }
 
   scrollFunction(event: any) {
-    console.log(event.scrollTop)
+    this.events.publish('hideButtons', this.hide);
+    this.lastScroll = this.currentScroll;
+    this.currentScroll = event.scrollTop;
+    this.hide = this.lastScroll < this.currentScroll;
   }
 }

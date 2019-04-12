@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from "@angular/fire/database";
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 import * as firebase from "firebase";
 import {getLocaleTimeFormat} from '@angular/common';
 
@@ -21,7 +22,8 @@ export class DbApiService{
   }
 
   getProductByCategory(category):Observable<any>{
-    return this.fdb.object(`/products/${category}`).valueChanges()
+    console.log("Entra en getProductByCategory");
+    return this.fdb.object(`/products/`).valueChanges();
   }
 
   getCategories(): Observable<any>{

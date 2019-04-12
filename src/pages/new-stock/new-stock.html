@@ -35,7 +35,7 @@
           </ion-option>
         </ion-select>
        -->
-        <ion-select formControlName="category" [(ngModel)]=item.category>
+        <ion-select formControlName="category" [(ngModel)]=item.category  multiple="true">
           <ion-option *ngFor="let cat of categories">
             {{cat?.name}}
           </ion-option>

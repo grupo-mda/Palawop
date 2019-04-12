@@ -1,5 +1,9 @@
 page-home {
 
+  .header-md::after {
+    background: none;
+  }
+
   & * {
   -webkit-user-select: none;
   -moz-user-select: none;
