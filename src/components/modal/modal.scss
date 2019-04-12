@@ -1,3 +1,56 @@
-modal {
+ion-modal {
+  overflow-y: hidden;
 
+  ion-backdrop {
+    visibility: visible;
+  }
+
+  .modal-wrapper, ion-card {
+    margin: auto !important;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  .modal-wrapper {
+    position: absolute !important;
+    width: 80% !important;
+    height: 80% !important;
+
+    ion-content {
+      background-color: transparent !important;
+
+      .scroll-content {
+        overflow-y: hidden;
+
+        ion-card {
+          border-radius: 10px;
+          padding-bottom: 60px;
+
+          .modal-buttons {
+            padding-top: 20px;
+            position: absolute;
+            width: 80%;
+            margin: auto;
+            left: 0;
+            right: 0;
+
+            ion-col {
+              padding-bottom: 60px;
+            }
+
+
+            //.hover ion-icon {
+            //  color: red !important;
+            //  //font-size: 40px;
+            //}
+
+            ion-icon {
+              font-size: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
 }

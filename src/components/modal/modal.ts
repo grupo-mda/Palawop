@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { NavParams, NavController, ViewController } from 'ionic-angular';
+import {Component, Input} from '@angular/core';
+import {NavParams, NavController, ViewController, Events} from 'ionic-angular';
+import {cpus} from "os";
+
 /**
  * Generated class for the ModalComponent component.
  *
@@ -12,15 +14,23 @@ import { NavParams, NavController, ViewController } from 'ionic-angular';
 })
 export class ModalComponent {
 
-   product:any;
+  product: any;
+  favButton = false;
+  chatButton = false;
 
-  constructor(public navParams: NavParams, public viewController: ViewController) {
-    this.product=navParams.data.product;
+  constructor(public navParams: NavParams,
+              public viewController: ViewController,
+              public events: Events) {
+    this.product = navParams.data.product;
+    events.subscribe('favButton', (status) => this.favButton = status);
+    events.subscribe('chatButton', (status) => this.chatButton = status);
   }
-  closeModal(){
+
+  closeModal() {
     this.viewController.dismiss();
   }
-  ionViewDidLoad(){
+
+  ionViewDidLoad() {
     console.log('ionViewDidLoad ModalComponent');
     console.log(this.product)
 
@@ -28,6 +38,6 @@ export class ModalComponent {
     backdrop.addEventListener('mouseup', () => this.closeModal());
     const modal = document.querySelector('.scroll-content');
     modal.addEventListener('touchend', () => this.closeModal());
-  }
 
+  }
 }

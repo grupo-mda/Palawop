@@ -1,14 +1,31 @@
 category-nav {
-    ion-slides{
-        width: 100%;
-        overflow-x: scroll;
- 
-        button{
-            margin:0;
-            padding: 0;
-            width: 100%;
-            overflow: hidden;
-        }
+  ion-slides {
+    width: 100%;
+    overflow-x: scroll;
+    position: relative;
+    top: 0;
+    z-index: -1;
+    transition: top .4s;
+    background: #2980B9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #FFFFFF00, #6DD5FA77, #2980B9aa);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #FFFFFF00, #6DD5FA77, #2980B9aa); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+
+    button {
+      border-radius: 50% !important;
+      height: 50px !important;
+      width: 50px !important;
     }
+
+    .swiper-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    &.hideScroll {
+      top: -60px;
+    }
+
+  }
+
 }

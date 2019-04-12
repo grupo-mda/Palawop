@@ -1,6 +1,6 @@
 import { Component,ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { LoadingController, NavController } from 'ionic-angular';
+import {Events, LoadingController, NavController, ViewController} from 'ionic-angular';
 import { DbApiService } from '../../shared/db-api.service';
 import { Slides } from 'ionic-angular';
 import { CategoryPage } from '../../pages/category/category';
@@ -18,12 +18,18 @@ import { CategoryPage } from '../../pages/category/category';
 export class CategoryNavComponent {
 
   categories:any;
+  hide: boolean = false;
   @ViewChild(Slides) slides: Slides;
+
 
   constructor(public afAuth: AngularFireAuth,
               public loadingCtrl: LoadingController,
               public dbapi: DbApiService,
-              public navCtrl:NavController) {
+              public navCtrl:NavController,
+              public events: Events) {
+    events.subscribe('hideButtons', (status) => {
+      this.hide = status;
+    });
     console.log('Hello CategoryNavComponent Component');
     let loader = this.loadingCtrl.create({
       content: 'Accediendo a los datos',
@@ -43,10 +49,5 @@ export class CategoryNavComponent {
 
   categoryTapped($event:any,category:any) {
     this.navCtrl.push(CategoryPage,category);
-  }
-
-  slideChanged() {
-    let currentIndex = this.slides.getActiveIndex();
-    console.log('Current index is', currentIndex);
   }
 }
