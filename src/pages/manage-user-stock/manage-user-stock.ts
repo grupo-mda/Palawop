@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, Loading, LoadingController, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, Loading, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {EditStockPage} from '../edit-stock/edit-stock';
 import {NewStockPage} from '../new-stock/new-stock';
 import {DbApiService} from "../../shared/db-api.service";
@@ -25,10 +25,12 @@ export class ManageUserStockPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public loadingCtrl: LoadingController,
-              public dbapi: DbApiService) {
+              public dbapi: DbApiService,
+              public alertCtrl: AlertController) {
+
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad ManageUserStockPage');
 
     this.loading = this.loadingCtrl.create();
@@ -36,6 +38,7 @@ export class ManageUserStockPage {
 
     this.dbapi.getStockOfUser()
       .then((snapshot) => {
+        this.user_stock = [];
         for (let k in snapshot) {
           this.user_stock.push({
             id: k,
@@ -49,11 +52,30 @@ export class ManageUserStockPage {
   }
 
   itemDelete(product){
-    this.user_stock.splice(this.user_stock.findIndex(
-      (productId) => {return productId.id == product.id }
-      ),1
-    );
-    this.dbapi.deleteItem(product);
+    const confirm = this.alertCtrl.create({
+      title: 'r u sure?',
+      message: 'This is 4eva',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            this.user_stock.splice(this.user_stock.findIndex(
+              (productId) => {return productId.id == product.id }
+              ),1
+            );
+            this.dbapi.deleteItem(product);
+            console.log('Agree clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
   
   editItem(item) {
