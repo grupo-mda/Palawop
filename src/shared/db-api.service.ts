@@ -49,7 +49,7 @@ export class DbApiService{
       .then((snapshot) => { return snapshot.val() });
   }
 
-  uploadItem(name: any, description: any, category: any, date: any) {
+  uploadItem(name: any, description: any, category: any, price: any) {
     let key = firebase.database().ref().child('products').push().key;
     firebase
       .database()
@@ -60,12 +60,13 @@ export class DbApiService{
         name: name,
         description: description,
         category: category,
-        date: date,
-        vendor:firebase.auth().currentUser.uid
+        date:firebase.database.ServerValue.TIMESTAMP,
+        vendor:firebase.auth().currentUser.uid,
+        price: price,
       });
   }
 
-  pushItem(name,description,category,date,id){
+  pushItem(name,description,category,id,price){
     firebase
       .database()
       .ref()
@@ -75,8 +76,9 @@ export class DbApiService{
         id: id,
         category: category,
         name: name,
+        price: price,
         description: description,
-        date : date,
+        date :firebase.database.ServerValue.TIMESTAMP,
         vendor : firebase.auth().currentUser.uid
       })
   }

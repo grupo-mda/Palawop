@@ -36,15 +36,15 @@ export class EditStockPage {
       name: ['', Validators.required],
       description: ['', Validators.required],
       category: ['', Validators.required],
-      date: ['', Validators.required],
+      price: ['', Validators.required],
     });
   }
   saveData(){
   this.dbapi.pushItem(this.productForm.value.name,
     this.productForm.value.description,
     this.productForm.value.category,
-    this.productForm.value.date,
-    this.item.id
+    this.item.id,
+    this.productForm.value.price
   );
   }
   backToManage() {
