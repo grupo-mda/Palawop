@@ -77,6 +77,7 @@ export class ManageUserStockPage {
     });
     confirm.present();
   }
+
   
   editItem(item) {
     this.navCtrl.push(EditStockPage,item);

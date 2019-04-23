@@ -30,6 +30,10 @@ import {EditStockPage} from '../pages/edit-stock/edit-stock';
 import {ManageProfilePage} from '../pages/manage-profile/manage-profile';
 import {NewStockPage} from "../pages/new-stock/new-stock";
 import {ManageUserStockPage} from '../pages/manage-user-stock/manage-user-stock';
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
+import { Cloudinary } from 'cloudinary-core';
+import {FileUploadModule} from 'ng2-file-upload';
+
 
 // import * as admin from 'firebase-admin';
 
@@ -57,8 +61,11 @@ import {ManageUserStockPage} from '../pages/manage-user-stock/manage-user-stock'
     ComponentsModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(environment.firebase),
-
-    AngularFirestoreModule.enablePersistence()
+    AngularFirestoreModule.enablePersistence(),
+    FileUploadModule,
+    [
+      CloudinaryModule.forRoot({Cloudinary}, { cloud_name: environment.cloudinary.cloud_name } as CloudinaryConfiguration),
+    ]
 
   ],
   bootstrap: [IonicApp],
