@@ -1,9 +1,3 @@
-<!--
-  Generated template for the TeamDeatailPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>{{product.name}}</ion-title>
@@ -11,17 +5,37 @@
 </ion-header>
 
 <ion-content padding>
-
   <ion-card>
-    <ion-card-content>
-      <ion-row>
-        <ion-col>
-          <h2>ID: {{product.id}} </h2>
-          <p>Description: {{product.description}}</p>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
+    <ion-item text-wrap>
+      <ion-label>
+        <cl-image *ngIf="product?.img != null" public-id="{{product?.img}}">
+          <cl-transformation height="150" width="150" ></cl-transformation>
+        </cl-image>
+      </ion-label>
+    </ion-item>
+    <ion-item text-wrap>
+      <ion-label> <strong>Name: </strong>
+        {{product.name}}
+      </ion-label>
+    </ion-item>
+
+    <ion-item text-wrap>
+      <ion-label> <strong>Category: </strong>
+        {{product.category}}
+      </ion-label>
+    </ion-item>
+
+    <ion-item text-wrap>
+      <ion-label> <strong>Description: </strong>
+        {{product.description}}
+      </ion-label>
+    </ion-item>
+    <ion-item text-wrap>
+      <ion-label> <strong>Price: </strong>
+        {{product?.price}} $
+      </ion-label>
+    </ion-item>
+    <ion-item></ion-item>
   </ion-card>
 
 </ion-content>
-
