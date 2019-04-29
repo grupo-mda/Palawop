@@ -19,6 +19,7 @@
       </ion-label>
     </ion-item>
 
+          <p>Vendor: <button (click)="viewAuthor(author)">{{author?.name}}</button></p>
     <ion-item text-wrap>
       <ion-label> <strong>Category: </strong>
         {{product.category}}
@@ -37,5 +38,9 @@
     </ion-item>
     <ion-item></ion-item>
   </ion-card>
-
+  <ion-card>
+    <ion-col>
+      <h2>Comments</h2><br>
+    </ion-col>
+  </ion-card>
 </ion-content>

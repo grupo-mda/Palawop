@@ -98,6 +98,14 @@ export class DbApiService{
   }
 
 
+  getSelectedUserData(userId){
+    console.log(userId);
+    return firebase.database()
+      .ref(`/users/${userId}`)
+      .once('value')
+      .then((snapshot) => { return snapshot.val()});
+  }
+
   pushUserData(name, lastName, email, admin) {
 
     let uid = firebase.auth().currentUser.uid;

@@ -20,18 +20,25 @@ import {ManageProfilePageModule} from '../manage-profile/manage-profile.module';
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-  private user: any;
 
+  private user: any;
+  ownProfile: boolean;
+  private author: any;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public authProvider: AuthProvider,
               public dbapi: DbApiService,
-              public app: App,
-              private events : Events
-              ) { }
+              public app: App) {
+    this.author = navParams.data;
+    this.dbapi.getCurrentUser()
+      .then((value) => this.user = value);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
+    if (this.author){
+      this.ownProfile = false;
+    }
   }
 
   ionViewWillEnter() {
@@ -57,6 +64,10 @@ export class ProfilePage {
       //     animate: true,
       //     direction: 'back'
       //   }));
+  }
+
+  chatWith(authorId) {
+
   }
 }
 
