@@ -49,7 +49,7 @@ export class DbApiService{
       .then((snapshot) => { return snapshot.val() });
   }
 
-  uploadItem(name: any, description: any, category: any, price: any) {
+  uploadItem(name: any, description: any, category: any, price: any,img: any) {
     let key = firebase.database().ref().child('products').push().key;
     firebase
       .database()
@@ -63,6 +63,7 @@ export class DbApiService{
         date:firebase.database.ServerValue.TIMESTAMP,
         vendor:firebase.auth().currentUser.uid,
         price: price,
+        img: img
       });
   }
 

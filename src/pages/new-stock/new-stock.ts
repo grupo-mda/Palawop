@@ -1,16 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage,Loading,NavController, NavParams, LoadingController } from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DbApiService} from "../../shared/db-api.service";
-import {ManageStockPage} from "../manage-stock/manage-stock";
-import { database } from 'firebase';
+import { CloudinaryOptions, CloudinaryUploader} from 'ng2-cloudinary';
+import {environment} from '../../environments/environment';
 
-/**
- * Generated class for the NewStockPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -21,6 +15,16 @@ export class NewStockPage {
   private item:any;
   productForm: FormGroup;
   private categories:any;
+  private ProductPhoto;
+  private loading: Loading;
+  public_id: string;
+
+  uploader: CloudinaryUploader = new CloudinaryUploader(
+    new CloudinaryOptions({
+      cloudName: environment.cloudinary.cloud_name,
+      uploadPreset: environment.cloudinary.upload_preset
+    })
+  );
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public formBuilder: FormBuilder,
               public dbapi: DbApiService,
@@ -59,11 +63,29 @@ export class NewStockPage {
   }
 
   saveData(){
+    console.log("uploading");
+    this.loading = this.loadingCtrl.create();
+    this.loading.present();
+
+    this.uploader.uploadAll();
+    this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
+      let res: any = JSON.parse(response);
+      console.log(res);
+      this.public_id = res.public_id;
       this.dbapi.uploadItem(this.productForm.value.name,
         this.productForm.value.description,
         this.productForm.value.category.toString().split("\n").join("").replace(/\s/g, "").split(","),
-        this.productForm.value.price
+        this.productForm.value.price,
+        this.public_id
       );
+    };
+    this.uploader.onErrorItem = function (fileItem, response, status, headers) {
+      console.info('onErrorItem', fileItem, response, status, headers);
+    };
+    this.loading.dismiss();
+
+
+
   }
 
   backToManage(){

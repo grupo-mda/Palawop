@@ -39,6 +39,12 @@
         <ion-label stacked>Price:</ion-label>
         <ion-input formControlName="price" type="number" value="{{item.price}}"></ion-input>
       </ion-item>
+      <ion-item>
+        <ion-icon name="camera" item-start></ion-icon>
+        <cl-image *ngIf="public_id != null" [public-id]="public_id">
+        </cl-image>
+        <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera">
+      </ion-item>
     </ion-list>
     <div padding>
       <button ion-button block type="submit" [disabled]="!productForm.valid" (click)="backToManage()">Guardar</button>
