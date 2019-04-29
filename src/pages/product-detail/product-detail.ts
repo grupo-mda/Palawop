@@ -3,7 +3,6 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {DbApiService} from '../../shared/db-api.service';
 import * as _ from 'lodash';
 import {LoadingController} from 'ionic-angular';
-import {ProfilePage} from "../profile/profile";
 
 /**
  * Generated class for the ProductDetailPage page.
@@ -19,7 +18,7 @@ import {ProfilePage} from "../profile/profile";
 })
 export class ProductDetailPage {
   private product: any;
-  private author: string;
+
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -28,16 +27,30 @@ export class ProductDetailPage {
     this.product = navParams.data;
   }
 
-  ionViewDidLoad(){
-    let authorId = this.product.vendor;
-    this.dbapi.getSelectedUserData(authorId).then(value => this.author = value);
-  }
+  /*
+    ionViewDidLoad() {
+      console.log('ionViewDidLoad ProductDetailPage');
+    }
+    */
   ionViewWillEnter() {
     console.log('ionViewWillEnter ProductDetailPage');
+
+    // let loader = this.loadingController.create({
+    //   content: 'Accediendo a los datos',
+    //   spinner: 'dots'
+    // });
+    //
+    // loader.present().then(() => {
+    //   this.dbapi.getProductData(this.product)
+    //     .subscribe(data => {
+    //         this.product = data;
+    //         return data;
+    //       }
+    //     );
+    //   loader.dismiss();
+    //
+    // });
   }
 
-  viewAuthor(){
-    this.navCtrl.push(ProfilePage, this.author);
-    console.log(this.author);
-  }
+
 }
