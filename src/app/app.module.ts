@@ -13,7 +13,6 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from "../pages/login/login";
 import { RegisterPage } from "../pages/register/register";
-import { SplashPage } from "../pages/splash/splash";
 import { AuthProvider } from '../providers/auth/auth';
 import {DbApiService} from '../shared/db-api.service';
 import {AngularFireDatabase} from "@angular/fire/database";
@@ -33,6 +32,11 @@ import {ManageUserStockPage} from '../pages/manage-user-stock/manage-user-stock'
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
 import {FileUploadModule} from 'ng2-file-upload';
+import {ChatListPage} from "../pages/chat-list/chat-list";
+import {ChatPage} from "../pages/chat/chat";
+import { UserSettingsProvider } from '../providers/user-settings/user-settings';
+import {IonicStorageModule} from "@ionic/storage";
+import { MessageServiceProvider } from '../providers/message-service/message-service';
 
 
 // import * as admin from 'firebase-admin';
@@ -41,7 +45,6 @@ import {FileUploadModule} from 'ng2-file-upload';
   declarations: [
     MyApp,
     HomePage,
-    SplashPage,
     LoginPage,
     RegisterPage,
     ProfilePage,
@@ -54,7 +57,9 @@ import {FileUploadModule} from 'ng2-file-upload';
     EditStockPage,
     ManageProfilePage,
     NewStockPage,
-    ManageUserStockPage
+    ManageUserStockPage,
+    ChatListPage,
+    ChatPage
   ],
   imports: [
     BrowserModule,
@@ -63,6 +68,7 @@ import {FileUploadModule} from 'ng2-file-upload';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
     FileUploadModule,
+    IonicStorageModule.forRoot(),
     [
       CloudinaryModule.forRoot({Cloudinary}, { cloud_name: environment.cloudinary.cloud_name } as CloudinaryConfiguration),
     ]
@@ -72,7 +78,6 @@ import {FileUploadModule} from 'ng2-file-upload';
   entryComponents: [
     MyApp,
     HomePage,
-    SplashPage,
     LoginPage,
     RegisterPage,
     ProfilePage,
@@ -85,7 +90,9 @@ import {FileUploadModule} from 'ng2-file-upload';
     EditStockPage,
     ManageProfilePage,
     NewStockPage,
-    ManageUserStockPage
+    ManageUserStockPage,
+    ChatListPage,
+    ChatPage
   ],
   providers: [
     StatusBar,
@@ -95,7 +102,9 @@ import {FileUploadModule} from 'ng2-file-upload';
     AuthProvider,
     DbApiService,
     AngularFireDatabase,
-    ComponentsModule
+    ComponentsModule,
+    UserSettingsProvider,
+    MessageServiceProvider
   ]
 })
 export class AppModule {}

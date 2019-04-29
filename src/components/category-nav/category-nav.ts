@@ -4,6 +4,7 @@ import {Events, LoadingController, NavController, ViewController} from 'ionic-an
 import { DbApiService } from '../../shared/db-api.service';
 import { Slides } from 'ionic-angular';
 import { CategoryPage } from '../../pages/category/category';
+import {NewStockPage} from "../../pages/new-stock/new-stock";
 
 /**
  * Generated class for the CategoryNavComponent component.
@@ -31,23 +32,23 @@ export class CategoryNavComponent {
       this.hide = status;
     });
     console.log('Hello CategoryNavComponent Component');
-    let loader = this.loadingCtrl.create({
-      content: 'Accediendo a los datos',
-      spinner: 'dots'
-    });
+    // let loader = this.loadingCtrl.create({
+    //   content: 'Accediendo a los datos',
+    //   spinner: 'dots'
+    // });
 
-    loader.present().then(() => {
+    // loader.present().then(() => {
       this.dbapi.getCategories()
         .subscribe(data => {
           this.categories = data
         });
         
-      loader.dismiss();
-
-    });
+      // loader.dismiss();
+    // });
   } 
 
   categoryTapped($event:any,category:any) {
-    this.navCtrl.push(CategoryPage,category);
+    if (category.name == 'add') this.navCtrl.push(NewStockPage,category);
+    else this.navCtrl.push(CategoryPage,category);
   }
 }

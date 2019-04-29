@@ -1,0 +1,38 @@
+page-chat-list {
+
+  .scroll-content {
+    padding: 0 !important;
+
+    ion-label p {
+      width: 82%;
+    }
+
+    .chat {
+      position: absolute;
+      right: 5px;
+      font-size: small;
+
+      &.chatDate {
+        bottom: 0;
+      }
+
+      &.chatCount {
+        top: 0;
+        right: 0;
+        background: #69aabe;
+        border-radius: 50%;
+        padding: 4px 8px;
+        color: white;
+        text-align: center;
+
+        &.fat {
+          padding: 4px;
+        }
+      }
+    }
+  }
+}
+
+
+
+

@@ -1,11 +1,11 @@
 category-nav {
   ion-slides {
     width: 100%;
-    overflow-x: scroll;
     position: relative;
     top: 0;
-    z-index: -1;
-    transition: top .4s;
+    z-index: 1;
+    opacity: 1;
+    transition: z-index 0s .4s, top .4s;
     background: #2980B9;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #FFFFFF00, #6DD5FA77, #2980B9aa);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #FFFFFF00, #6DD5FA77, #2980B9aa); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -24,8 +24,28 @@ category-nav {
 
     &.hideScroll {
       top: -60px;
+      z-index: -1;
+      transition: z-index 0s,  top .4s
+      //transition: z-index 0.4s step-end;
+      //transition-delay: ;
+
+      //visibility: hidden;
+      //opacity: 0;
+      //transition: visibility 0s, opacity 0.5s linear;
     }
 
   }
 
 }
+
+//edge {
+//  z-index: -1;
+//  opacity: 0;
+//  transition: z-index 0.5s step-end, opacity 0.5s linear;
+//}
+//
+//edge.highlight {
+//  z-index: 1;
+//  opacity: 1;
+//  transition: z-index 0.5s step-start, opacity 0.5s linear;
+//}

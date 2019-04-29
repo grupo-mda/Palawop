@@ -6,8 +6,7 @@ import {DbApiService} from '../../shared/db-api.service';
 import {ProductDetailPage} from '../product-detail/product-detail';
 import {ModalComponent} from '../../components/modal/modal';
 import * as _ from 'lodash';
-
-import {el} from "@angular/platform-browser/testing/src/browser_util";
+import {ChatPage} from "../chat/chat";
 
 @Component({
   selector: 'page-home',
@@ -52,11 +51,12 @@ export class HomePage {
       .then((snapshot) => {
         for (let k in snapshot) {
           this.stock.push({
-            id: k,
-            name: snapshot[k].name,
-            description: snapshot[k].description,
-            price: snapshot[k].price,
-            img: snapshot[k].img
+            id          : k,
+            name        : snapshot[k].name,
+            description : snapshot[k].description,
+            price       : snapshot[k].price,
+            img         : snapshot[k].img,
+            vendor      : snapshot[k].vendor
           })
         }
       })
@@ -131,11 +131,7 @@ export class HomePage {
     }
 
     if (chatButton != null && (hoverElement == chatButton || hoverElement == chatButton.querySelector("ion-icon"))) {
-      this.toast.create({
-        message: 'Chat pressed',
-        duration: 3000
-      })
-        .present();
+      this.openChat();
     }
   }
 
@@ -144,5 +140,15 @@ export class HomePage {
     this.lastScroll = this.currentScroll;
     this.currentScroll = event.scrollTop;
     this.hide = this.lastScroll < this.currentScroll;
+  }
+
+  private openChat() {
+    this.navCtrl.push(
+      ChatPage,
+      ModalComponent.owner,
+      {
+        animate: true,
+        animation: "transition-ios"
+      });
   }
 }

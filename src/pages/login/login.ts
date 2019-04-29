@@ -54,15 +54,17 @@ export class LoginPage {
       this.loading.present();
 
       this.authProvider.loginUser(user.email, user.password)
-        .then(() => {
-          this.app.getRootNav().setRoot(
-            TabsPage,
-            {},
-            {
-              animate: true,
-              direction: 'forward'
-            });
-          },
+        // .then(() => {
+          // this.app.getRootNav().setRoot(
+          //   TabsPage,
+          //   {},
+          //   {
+          //     animate: true,
+          //     direction: 'forward'
+          //   });
+          // },
+        // )
+        .catch(
           (err) => {
             this.setError(err);
           })

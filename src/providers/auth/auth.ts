@@ -1,17 +1,39 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import firebase from 'firebase';
+import {BehaviorSubject} from "rxjs";
+import {UserSettingsProvider} from "../user-settings/user-settings";
+import {DbApiService} from "../../shared/db-api.service";
+import * as _ from "lodash";
 
 @Injectable()
 export class AuthProvider {
 
-  constructor() {
+  static userLogged  = new BehaviorSubject(false);
+  static currentUser : firebase.database.DataSnapshot;
+
+  private homeTabId    = 'tab-t0-1';
+  private profileTabId = 'tab-t0-3';
+
+  constructor(private settings : UserSettingsProvider,
+              private dbapi    : DbApiService) {
   }
 
   loginUser(email: string, password: string): Promise<any> {
-    return firebase.auth().signInWithEmailAndPassword(email, password);
+
+    return firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => this.dbapi.getCurrentUser()
+        .then(value => {
+          this.settings.login(value);
+          AuthProvider.currentUser = value;
+        }))
+      .then(() => AuthProvider.userLogged.next(true))
+      .then(() => document.getElementById(this.profileTabId).click());
   }
 
   signupUser(email: string, password: string): Promise<any> {
+
     return firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -26,13 +48,23 @@ export class AuthProvider {
             admin: false,
             name: "",
             email: email
-          })
+          });
       })
-      ;
+      .then(() => this.dbapi.getCurrentUser()
+        .then(value => {
+          this.settings.login(value);
+          AuthProvider.currentUser = value;
+        }))
+      .then(() => AuthProvider.userLogged.next(true))
+      .then(() => document.getElementById(this.profileTabId).click());
   }
 
   logoutUser(): Promise<void> {
-    return firebase.auth().signOut();
+    AuthProvider.userLogged.next(false);
+    AuthProvider.currentUser = null;
+    this.settings.logout();
+    return firebase.auth().signOut()
+      .then(() => document.getElementById(this.homeTabId).click());
   }
 
   // deleteUser(user): Promise<any> {
