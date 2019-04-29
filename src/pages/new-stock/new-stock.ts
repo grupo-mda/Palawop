@@ -54,7 +54,7 @@ export class NewStockPage {
       name: ['', Validators.required],
       description: ['', Validators.required],
       category: ['', Validators.required],
-      date: ['', Validators.required],
+      price: ['', Validators.required],
     });
   }
 
@@ -62,7 +62,7 @@ export class NewStockPage {
       this.dbapi.uploadItem(this.productForm.value.name,
         this.productForm.value.description,
         this.productForm.value.category.toString().split("\n").join("").replace(/\s/g, "").split(","),
-        this.productForm.value.date
+        this.productForm.value.price
       );
   }
 
