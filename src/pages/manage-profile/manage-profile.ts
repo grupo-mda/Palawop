@@ -59,6 +59,6 @@ export class ManageProfilePage {
     );
   }
   backToProfile() {
-    this.navCtrl.push(ProfilePage)
+    this.navCtrl.pop()
   }
 }

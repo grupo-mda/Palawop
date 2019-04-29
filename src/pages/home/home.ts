@@ -38,20 +38,12 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad stockPage')
+    console.log('ionViewDidLoad stockPage');
+    console.log(this.stock);
     let loader = this.loadingController.create({
       content: 'Accediendo a los datos',
       spinner: 'dots'
     });
-
-    // loader.present().then(() => {
-    //   this.dbapi.getStock()
-    //     .subscribe(data => this.stock = data
-    //     );
-    //
-    //   loader.dismiss();
-    //
-    // });
 
     loader.present();
 
@@ -62,7 +54,9 @@ export class HomePage {
           this.stock.push({
             id: k,
             name: snapshot[k].name,
-            description: snapshot[k].description
+            description: snapshot[k].description,
+            price: snapshot[k].price,
+            img: snapshot[k].img
           })
         }
       })
@@ -70,18 +64,6 @@ export class HomePage {
       .then(() => loader.dismiss())
   }
 
-  /*
-    signOut() {
-      this.authProvider.logoutUser()
-        .then(() => this.navCtrl.setRoot(
-          LoginPage,
-          {},
-          {
-            animate: true,
-            direction: 'back'
-          }));
-    }
-    */
   itemTapped(product: any) {
     this.navCtrl.push(ProductDetailPage, product)
 
