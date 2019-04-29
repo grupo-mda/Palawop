@@ -37,6 +37,7 @@ import {ChatPage} from "../pages/chat/chat";
 import { UserSettingsProvider } from '../providers/user-settings/user-settings';
 import {IonicStorageModule} from "@ionic/storage";
 import { MessageServiceProvider } from '../providers/message-service/message-service';
+import {StarRatingModule} from "ionic3-star-rating";
 
 
 // import * as admin from 'firebase-admin';
@@ -68,6 +69,7 @@ import { MessageServiceProvider } from '../providers/message-service/message-ser
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
     FileUploadModule,
+    StarRatingModule,
     IonicStorageModule.forRoot(),
     [
       CloudinaryModule.forRoot({Cloudinary}, { cloud_name: environment.cloudinary.cloud_name } as CloudinaryConfiguration),
