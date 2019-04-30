@@ -3,6 +3,7 @@ import {NavParams, NavController, ViewController, Events} from 'ionic-angular';
 import {cpus} from "os";
 import {DbApiService} from "../../shared/db-api.service";
 import * as _ from 'lodash';
+import {AuthProvider} from "../../providers/auth/auth";
 
 
 /**
@@ -21,12 +22,14 @@ export class ModalComponent {
   favButton    = false;
   chatButton   = false;
   static owner : any;
+  userLogged   : boolean;
 
   constructor(public navParams: NavParams,
               public viewController: ViewController,
               public events: Events,
               private dbapi : DbApiService) {
     this.product = navParams.data.product;
+    this.userLogged = AuthProvider.currentUser != null;
     this.dbapi.getUserData(this.product.vendor).then(value =>
       ModalComponent.owner = _.assign(value, {
         'id': this.product.vendor

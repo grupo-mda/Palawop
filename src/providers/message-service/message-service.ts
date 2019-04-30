@@ -101,7 +101,7 @@ export class MessageServiceProvider {
     ;
   }
 
-  unsuscribeChatList() {
+  static unsuscribeChatList() {
     if (MessageServiceProvider.chatSubscription != null)
       MessageServiceProvider.chatSubscription.unsubscribe();
     MessageServiceProvider.chatSubscription = null;

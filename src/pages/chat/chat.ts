@@ -124,16 +124,28 @@ export class ChatPage implements AfterViewChecked {
   }
 
 
-  ionViewDidLeave() {
-    if (this.navCtrl.getPrevious().name != ChatListPage.name) {
-      let tabs = document.querySelectorAll('.tabbar');
-      if (tabs !== null) {
-        Object.keys(tabs).map((key) => {
-          tabs[key].style.display = 'flex';
-          tabs[key].style.transform = 'translateY(0)';
-        });
-      }
+  ionViewWillLeave() {
+    let tabs = document.querySelectorAll('.show-tabbar');
+    if (tabs !== null) {
+      Object.keys(tabs).map((key) => {
+        tabs[key].style.display = 'flex';
+        tabs[key].style.transform = 'translateX(0px)';
+      });
+
     }
+  }
+
+
+  ionViewDidLeave() {
+    // if (this.navCtrl.getPrevious().name != ChatListPage.name) {
+    //   let tabs = document.querySelectorAll('.tabbar');
+    //   if (tabs !== null) {
+    //     Object.keys(tabs).map((key) => {
+    //       tabs[key].style.display = 'flex';
+    //       tabs[key].style.transform = 'translateY(0)';
+    //     });
+    //   }
+    // }
 
 
     this.sendWritingStatus(false);

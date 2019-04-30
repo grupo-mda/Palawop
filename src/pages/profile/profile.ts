@@ -6,6 +6,7 @@ import { LoginPage } from "../login/login";
 import {ManageStockPage} from '../manage-stock/manage-stock';
 import {ManageProfilePage} from '../manage-profile/manage-profile';
 import {ManageProfilePageModule} from '../manage-profile/manage-profile.module';
+import {MessageServiceProvider} from "../../providers/message-service/message-service";
 
 /**
  * Generated class for the ProfilePage page.
@@ -48,15 +49,8 @@ export class ProfilePage {
   }
 
   signOut() {
-    this.authProvider.logoutUser()
-      // .then(() =>
-      //   this.app.getRootNav().setRoot(
-      //   LoginPage,
-      //   {},
-      //   {
-      //     animate: true,
-      //     direction: 'back'
-      //   }));
+    this.authProvider.logoutUser();
+    MessageServiceProvider.unsuscribeChatList();
   }
 }
 

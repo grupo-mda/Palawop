@@ -8,6 +8,7 @@ import {ManageUserStockPage} from '../manage-user-stock/manage-user-stock';
 import {AuthProvider} from "../../providers/auth/auth";
 import {LoginPage} from "../login/login";
 import {ChatListPage} from "../chat-list/chat-list";
+import {MessageServiceProvider} from "../../providers/message-service/message-service";
 
 /**
  * Generated class for the TabsPage page.
@@ -38,7 +39,7 @@ export class TabsPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public dbapi: DbApiService,
-              private auth: AuthProvider) {
+              private messageService : MessageServiceProvider) {
 
   }
 
@@ -48,6 +49,7 @@ export class TabsPage {
     AuthProvider.userLogged.subscribe({next: status => {
       console.log('el usuario ha cambiado de estado, ahora está ', status);
         this.userLogged = status;
+        if (status) this.messageService.startChatListObserver();
       }})
 
     // this.dbapi.getCurrentUser()
