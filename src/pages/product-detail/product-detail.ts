@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {DbApiService} from '../../shared/db-api.service';
 import {LoadingController} from 'ionic-angular';
 import { ProfilePage } from "../profile/profile";
+import {StarRatingModule} from "ionic3-star-rating";
 
 /**
  * Generated class for the ProductDetailPage page.

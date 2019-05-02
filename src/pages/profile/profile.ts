@@ -4,6 +4,8 @@ import { DbApiService } from "../../shared/db-api.service";
 import { AuthProvider } from "../../providers/auth/auth";
 import {ManageProfilePage} from '../manage-profile/manage-profile';
 import * as _ from 'lodash';
+import {ManageProfilePageModule} from '../manage-profile/manage-profile.module';
+import {MessageServiceProvider} from "../../providers/message-service/message-service";
 
 /**
  * Generated class for the ProfilePage page.
@@ -49,6 +51,7 @@ export class ProfilePage {
 
   signOut() {
     this.authProvider.logoutUser();
+    MessageServiceProvider.unsuscribeChatList();
   }
 
 }
