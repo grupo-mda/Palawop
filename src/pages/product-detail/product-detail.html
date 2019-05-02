@@ -20,6 +20,12 @@
     </ion-item>
 
     <ion-item text-wrap>
+      <ion-label> <strong>Vendor: </strong>
+        <button (click)="viewAuthor(author)">{{author?.name}}</button>
+      </ion-label>
+    </ion-item>
+
+    <ion-item text-wrap>
       <ion-label> <strong>Category: </strong>
         {{product.category}}
       </ion-label>

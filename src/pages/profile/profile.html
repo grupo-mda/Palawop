@@ -6,7 +6,19 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
+  <button
+  (click)="modifyProfile(user)"
+  ion-fab
+  color="dark">
+  <ion-icon name="build"></ion-icon>
+  </button>
+  <button
+    (click)="signOut()"
+    ion-fab
+    color="dark">
+    <ion-icon name="close"></ion-icon>
+  </button>
+  <div>
     <ion-item text-wrap>
       <ion-label> <strong>Name: </strong>
         {{user?.name}}
@@ -24,24 +36,7 @@
         {{user?.email}}
       </ion-label>
     </ion-item>
-    <ion-item></ion-item>
-    <ion-fab center bottom>
-      <button
-        (click)="modifyProfile(user)"
-        ion-fab
-        color="dark">
-        <ion-icon name="build"></ion-icon>
-      </button>
-      <button
-        (click)="signOut()"
-        ion-fab
-        color="dark">
-        <ion-icon name="close"></ion-icon>
-      </button>
-    </ion-fab>
-
-  </ion-card>
-
+  </div>
 </ion-content>
 
 

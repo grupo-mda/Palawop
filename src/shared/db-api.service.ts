@@ -118,13 +118,12 @@ export class DbApiService{
           this.settings.login(value);
           AuthProvider.currentUser = value;
         }))
-      .then(() => this.events.publish('newUserData'))
+      .then(() => this.events.publish('newUserData'));
   }
 
 
   deleteUser(user_data: any) {
     this.fdb.list(`/users/${user_data.id}`).remove();
-    // firebase.auth().currentUser.delete();
   }
 
 

@@ -38,7 +38,6 @@ import { UserSettingsProvider } from '../providers/user-settings/user-settings';
 import {IonicStorageModule} from "@ionic/storage";
 import { MessageServiceProvider } from '../providers/message-service/message-service';
 
-
 // import * as admin from 'firebase-admin';
 
 @NgModule({
