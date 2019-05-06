@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
+import {App, Events, IonicPage, NavController, NavParams} from 'ionic-angular';
 import { DbApiService } from "../../shared/db-api.service";
 import { AuthProvider } from "../../providers/auth/auth";
-import { LoginPage } from "../login/login";
-import {ManageStockPage} from '../manage-stock/manage-stock';
 import {ManageProfilePage} from '../manage-profile/manage-profile';
+import * as _ from 'lodash';
 import {ManageProfilePageModule} from '../manage-profile/manage-profile.module';
+import {MessageServiceProvider} from "../../providers/message-service/message-service";
 
 /**
  * Generated class for the ProfilePage page.
@@ -21,17 +21,27 @@ import {ManageProfilePageModule} from '../manage-profile/manage-profile.module';
 })
 export class ProfilePage {
   private user: any;
+  private iAm: boolean;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public authProvider: AuthProvider,
               public dbapi: DbApiService,
-              public app: App) {
-    this.dbapi.getCurrentUser()
-      .then((value) => this.user = value);
+              public app: App,
+              private events: Events) {
+    this.user = navParams.data;
+    this.iAm = _.size(this.user) == 0;
   }
 
   ionViewDidLoad() {
+    console.log('ionViewDidLoad ProfilePage');
+  }
+
+  ionViewWillEnter() {
+    if (this.iAm) {
+      this.user = AuthProvider.currentUser;
+    }
+
     console.log('ionViewDidLoad ProfilePage');
   }
 
@@ -40,16 +50,10 @@ export class ProfilePage {
   }
 
   signOut() {
-    this.authProvider.logoutUser()
-      .then(() =>
-        this.app.getRootNav().setRoot(
-        LoginPage,
-        {},
-        {
-          animate: true,
-          direction: 'back'
-        }));
+    this.authProvider.logoutUser();
+    MessageServiceProvider.unsuscribeChatList();
   }
+
 }
 
 

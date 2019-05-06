@@ -14,3 +14,29 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.errorMsg {
+
+  height: 85vh;
+  width: 100vw;
+  text-align: center;
+  font-size: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    margin: 0;
+
+    &.info {
+      transform: translateY(-10px);
+      color: #bbb;
+      font-size: 25px;
+      margin: 20px;
+    }
+  }
+
+  button {
+    font-size: 2rem;
+  }
+}

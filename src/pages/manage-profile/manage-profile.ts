@@ -52,13 +52,15 @@ export class ManageProfilePage {
   }
 
   saveUserData(){
-    this.dbapi.pushUserData(this.userForm.value.name,
+    this.dbapi.pushUserData(
+      this.userForm.value.name,
       this.userForm.value.lastName,
       this.userForm.value.email,
       this.user.admin
     );
   }
+
   backToProfile() {
-    this.navCtrl.push(ProfilePage)
+    this.navCtrl.pop()
   }
 }

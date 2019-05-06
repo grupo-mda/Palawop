@@ -41,10 +41,14 @@ export class ManageUserStockPage {
         this.user_stock = [];
         for (let k in snapshot) {
           this.user_stock.push({
-            id: k,
-            name: snapshot[k].name,
-            description: snapshot[k].description,
-            category: snapshot[k].category
+            id          : k,
+            name        : snapshot[k].name,
+            description : snapshot[k].description,
+            price       : snapshot[k].price,
+            img         : snapshot[k].img,
+            vendor      : snapshot[k].vendor,
+            category: snapshot[k].category,
+
           })
         }
       })
@@ -86,7 +90,10 @@ export class ManageUserStockPage {
   uploadItem() {
     this.navCtrl.push(NewStockPage);
   }
-
+  productDetail(item){
+    console.log(item);
+    this.navCtrl.push(ProductDetailPage,item);
+  }
 
 }
 

@@ -1,7 +1,9 @@
-<ion-tabs id="tabs">
-  <ion-tab [root]="homeTab" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="profileTab" tabTitle="Profile" tabIcon="person"></ion-tab>
-  <ion-tab [show]="!isAdmin" [root]="manage_user_stock" tabTitle="Manage Stock" tabIcon="settings"></ion-tab>
-  <ion-tab [show]="isAdmin" [root]="adminTab" tabTitle="Admin" tabIcon="settings"></ion-tab>
+<ion-tabs selectedIndex="1" id="tabs">
+  <ion-tab [root]="chatList"   tabIcon="ios-chatbubbles" [show]="userLogged" tabsHideOnSubPages="true"></ion-tab>
+  <ion-tab [root]="homeTab"    tabIcon="home"></ion-tab>
+  <ion-tab [root]="loginTab"   tabIcon="person"          [show]="!userLogged"></ion-tab>
+  <ion-tab [root]="profileTab" tabIcon="person"          [show]="userLogged" ></ion-tab>
+  <ion-tab [show]="!isAdmin" [root]="manage_user_stock"  tabIcon="settings"></ion-tab>
+<!--  <ion-tab [show]="isAdmin" [root]="adminTab" tabTitle="Admin" tabIcon="settings"></ion-tab>-->
 </ion-tabs>
 

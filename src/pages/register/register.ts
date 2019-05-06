@@ -71,19 +71,19 @@ export class RegisterPage {
       this.loading.present();
 
       this.authProvider.signupUser(user.email, user.password)
-        .then(
-          (user) => {
-            this.app.getRootNav().setRoot(
-              TabsPage,
-              {},
-              {
-                animate: true,
-                direction: 'forward'
-              });
-          },
-          (err) => {
-            this.setError(err);
-          })
+        // .then(
+        //   (user) => {
+        //     this.app.getRootNav().setRoot(
+        //       TabsPage,
+        //       {},
+        //       {
+        //         animate: true,
+        //         direction: 'forward'
+        //       });
+        //   },
+        //   (err) => {
+        //     this.setError(err);
+        //   })
         .then(() => this.loading.dismiss())
         .then(() => this.setFocusOnError());
 

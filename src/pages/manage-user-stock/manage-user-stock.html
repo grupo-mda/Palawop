@@ -10,23 +10,32 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
 
-  <ion-list inset>
-    <button (click)="uploadItem()" outline >
-      <ion-icon name="add-circle" color="success" outline></ion-icon>
-    </button>
-    <div *ngFor="let item of user_stock" ion-item="">
-      <button
-        (click)="itemTappedAdmin(item)"
-      >{{item?.name}}
-      </button>
-      <button (click)="editItem(item)" outline >
-        <ion-icon name="create" color="success"></ion-icon>
-      </button >
-      <button (click)="itemDelete(item)" outline >
-        <ion-icon name="trash" color="danger" outline></ion-icon>
-      </button>
+
+<ion-content padding>
+  <ion-list no-lines>
+    <div *ngFor="let item of user_stock">
+      <ion-item>
+        <button ion-item (click)="productDetail(item)">
+          <ion-thumbnail item-start>
+            <cl-image *ngIf="item?.img != null" public-id="{{item?.img}}">
+              <cl-transformation aspect-ratio="1:1" gravity="auto" radius="max" width="1000" crop="fill">
+              </cl-transformation>
+            </cl-image>
+          </ion-thumbnail>
+          {{item?.name}}
+        </button>
+        <button ion-button color="dark" clear icon-only (click)="editItem(item)" item-end>
+          <ion-icon name='create'></ion-icon>
+        </button>
+        <button ion-button color="danger" clear icon-only (click)="itemDelete(item)" item-end>
+          <ion-icon name='trash'></ion-icon>
+        </button>
+      </ion-item>
     </div>
   </ion-list>
+  <ion-fab bottom right>
+    <button (click)="uploadItem()" color="dark" ion-fab><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>
+

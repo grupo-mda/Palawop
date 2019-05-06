@@ -72,17 +72,19 @@ export class NewStockPage {
       let res: any = JSON.parse(response);
       console.log(res);
       this.public_id = res.public_id;
+      this.dbapi.uploadItem(this.productForm.value.name,
+        this.productForm.value.description,
+        this.productForm.value.category.toString().split("\n").join("").replace(/\s/g, "").split(","),
+        this.productForm.value.price,
+        this.public_id
+      );
     };
     this.uploader.onErrorItem = function (fileItem, response, status, headers) {
       console.info('onErrorItem', fileItem, response, status, headers);
     };
     this.loading.dismiss();
 
-    /*this.dbapi.uploadItem(this.productForm.value.name,
-      this.productForm.value.description,
-      this.productForm.value.category.toString().split("\n").join("").replace(/\s/g, "").split(","),
-      this.productForm.value.price
-    );*/
+
 
   }
 

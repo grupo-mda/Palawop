@@ -1,5 +1,9 @@
 page-home {
 
+  ion-slides {
+    //z-index: 1;
+  }
+
   .header-md::after {
     background: none;
   }
@@ -13,6 +17,7 @@ page-home {
 
   .scroll-content {
     padding: 16px 5px !important;
+    margin-top: 56px !important;
 
     ion-col {
 
