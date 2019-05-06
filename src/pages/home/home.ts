@@ -58,7 +58,8 @@ export class HomePage {
             description : snapshot[k].description,
             price       : snapshot[k].price,
             img         : snapshot[k].img,
-            vendor      : snapshot[k].vendor
+            vendor      : snapshot[k].vendor,
+            category: snapshot[k].category,
           })
         }
       })
