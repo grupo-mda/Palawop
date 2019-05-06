@@ -25,33 +25,33 @@ import {ProfilePage} from "../profile/profile";
 })
 export class ChatPage implements AfterViewChecked {
 
-  private internetAvailable   : boolean;
+  private internetAvailable: boolean;
 
-  private anotherUserName     : string;
-  private anotherUserId       : string;
-  private myId                : string;
-  private inputMessage        = "";
-  private messages            = [];
-  private messagesNotReaded   = 0;
+  private anotherUserName: string;
+  private anotherUserId: string;
+  private myId: string;
+  private inputMessage = "";
+  private messages = [];
+  private messagesNotReaded = 0;
   private anotherUserIsTyping = false;
-  private nearToBottom        = true;
+  private nearToBottom = true;
 
-  private startWriting : Subscription;
-  private stopWriting  : Subscription;
+  private startWriting: Subscription;
+  private stopWriting: Subscription;
 
 
-  @ViewChild(Navbar) navbar   : Navbar;
-  @ViewChild(Content) content : Content;
+  @ViewChild(Navbar) navbar: Navbar;
+  @ViewChild(Content) content: Content;
 
-  constructor(public navCtrl      : NavController,
-              public navParams    : NavParams,
-              public dbapi        : DbApiService,
-              private events      : Events,
-              private messagesApi : MessageServiceProvider,
-              private auth        : AuthProvider) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public dbapi: DbApiService,
+              private events: Events,
+              private messagesApi: MessageServiceProvider,
+              private auth: AuthProvider) {
     this.anotherUserName = navParams.data.name;
-    this.anotherUserId   = navParams.data.id;
-    this.myId            = firebase.auth().currentUser.uid;
+    this.anotherUserId = navParams.data.id;
+    this.myId = firebase.auth().currentUser.uid;
   }
 
 
@@ -61,7 +61,7 @@ export class ChatPage implements AfterViewChecked {
 
 
   logScrolling($event: ScrollEvent) {
-    let scrollHeight  = document.querySelector('page-chat > ion-content > div.scroll-content').scrollHeight;
+    let scrollHeight = document.querySelector('page-chat > ion-content > div.scroll-content').scrollHeight;
     let currentScroll = this.content.contentHeight + $event.scrollTop;
     this.nearToBottom = currentScroll > scrollHeight - 20;
   }
@@ -75,7 +75,7 @@ export class ChatPage implements AfterViewChecked {
   ionViewDidEnter() {
     this.navbar.backButtonClick = () => this.navCtrl.pop(
       {
-        animate:   true,
+        animate: true,
         animation: "transition-ios"
       });
     console.log(this.navbar)
@@ -87,7 +87,7 @@ export class ChatPage implements AfterViewChecked {
     console.log('ionViewDidLoad ChatPage - chating with', this.navParams.data);
 
     let chat = _.find(MessageServiceProvider.chats, ['id', this.anotherUserId]);
-    this.messagesNotReaded = chat != null? chat.notReaded : 0;
+    this.messagesNotReaded = chat != null ? chat.notReaded : 0;
 
     this.handleMyWritingStatus();
 
@@ -153,7 +153,8 @@ export class ChatPage implements AfterViewChecked {
       this.startWriting.unsubscribe();
       this.stopWriting.unsubscribe();
       this.events.unsubscribe('chat');
-    } catch (ignored) { }
+    } catch (ignored) {
+    }
   }
 
 
@@ -163,7 +164,8 @@ export class ChatPage implements AfterViewChecked {
     try {
       this.startWriting.unsubscribe();
       this.stopWriting.unsubscribe();
-    } catch (ignored) { }
+    } catch (ignored) {
+    }
 
     this.startWriting = inputChat
       .pipe(first())
@@ -187,9 +189,9 @@ export class ChatPage implements AfterViewChecked {
   sendMessage() {
     const newMessage = {
       timestamp: firebase.database.ServerValue.TIMESTAMP,
-      from:      this.myId,
-      readed:    false,
-      text:      this.inputMessage
+      from: this.myId,
+      readed: false,
+      text: this.inputMessage
     };
 
     this.inputMessage = "";
@@ -214,7 +216,12 @@ export class ChatPage implements AfterViewChecked {
 
 
   goToProfile() {
-    if (ProfilePage.name == this.navCtrl.getPrevious().name) this.navCtrl.pop();
-    else this.navCtrl.push(ProfilePage, this.navParams.data);
+    if (ProfilePage.name == this.navCtrl.getPrevious().name)
+      this.navCtrl.pop({
+        animate: true,
+        animation: 'ios-transition'
+      });
+    else
+      this.navCtrl.push(ProfilePage, this.navParams.data);
   }
 }

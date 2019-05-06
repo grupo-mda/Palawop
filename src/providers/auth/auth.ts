@@ -11,7 +11,7 @@ export class AuthProvider {
   static userLogged  = new BehaviorSubject(false);
   static currentUser : firebase.database.DataSnapshot;
 
-  private homeTabId    = 'tab-t0-1';
+  private homeTabId    = 'tab-t0-0';
   private profileTabId = 'tab-t0-3';
 
   constructor(private settings : UserSettingsProvider,
