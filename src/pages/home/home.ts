@@ -7,6 +7,8 @@ import {ProductDetailPage} from '../product-detail/product-detail';
 import {ModalComponent} from '../../components/modal/modal';
 import * as _ from 'lodash';
 import {ChatPage} from "../chat/chat";
+import {Page} from "ionic-angular/umd/navigation/nav-util";
+import {ProfilePage} from "../profile/profile";
 
 @Component({
   selector: 'page-home',
@@ -17,8 +19,8 @@ import {ChatPage} from "../chat/chat";
 })
 export class HomePage {
   private stock = [];
-  favButton = false;
-  favButton_1 = false;
+  profileButton = false;
+  profileButton_1 = false;
   chatButton = false;
   chatButton_1 = false;
   doVibration = false;
@@ -80,7 +82,7 @@ export class HomePage {
 
   somethingOnFocus(event) {
 
-    this.events.publish('favButton', this.favButton);
+    this.events.publish('profileButton', this.profileButton);
     this.events.publish('chatButton', this.chatButton);
 
     const hoverElement = document.elementFromPoint(
@@ -88,33 +90,33 @@ export class HomePage {
       event.changedTouches[0].pageY
     );
 
-    const favButton = document.getElementById("fav-button");
+    const profileButton = document.getElementById("profile-button");
     const chatButton = document.getElementById("chat-button");
 
-    if (favButton != null && chatButton != null) {
-      this.favButton_1 = this.favButton;
-      this.favButton = favButton != null
-        && (hoverElement == favButton || hoverElement == favButton.querySelector("ion-icon"));
+    if (profileButton != null && chatButton != null) {
+      this.profileButton_1 = this.profileButton;
+      this.profileButton = profileButton != null
+        && (hoverElement == profileButton || hoverElement == profileButton.querySelector("ion-icon"));
 
       this.chatButton_1 = this.chatButton;
       this.chatButton = chatButton != null
         && (hoverElement == chatButton || hoverElement == chatButton.querySelector("ion-icon"));
 
-      if (!this.favButton_1 && this.favButton
+      if (!this.profileButton_1 && this.profileButton
         || !this.chatButton_1 && this.chatButton) {
         navigator.vibrate(100);
-        if (this.favButton) favButton.classList.add("hover");
+        if (this.profileButton) profileButton.classList.add("hover");
         else chatButton.classList.add("hover");
       }
 
-      if (this.favButton_1 && !this.favButton) favButton.classList.remove("hover");
+      if (this.profileButton_1 && !this.profileButton) profileButton.classList.remove("hover");
       if (this.chatButton_1 && !this.chatButton) chatButton.classList.remove("hover");
     }
   }
 
   touchend(event) {
 
-    const favButton = document.getElementById("fav-button");
+    const profileButton = document.getElementById("profile-button");
     const chatButton = document.getElementById("chat-button");
 
     const hoverElement = document.elementFromPoint(
@@ -122,16 +124,12 @@ export class HomePage {
       event.changedTouches[0].pageY
     );
 
-    if (favButton != null && (hoverElement == favButton || hoverElement == favButton.querySelector("ion-icon"))) {
-      this.toast.create({
-        message: 'Fav pressed',
-        duration: 3000
-      })
-        .present();
+    if (profileButton != null && (hoverElement == profileButton || hoverElement == profileButton.querySelector("ion-icon"))) {
+      this.openPage(ProfilePage, 'wp-transition');
     }
 
     if (chatButton != null && (hoverElement == chatButton || hoverElement == chatButton.querySelector("ion-icon"))) {
-      this.openChat();
+      this.openPage(ChatPage, 'ios-transition');
     }
   }
 
@@ -142,13 +140,13 @@ export class HomePage {
     this.hide = this.lastScroll < this.currentScroll;
   }
 
-  private openChat() {
+  private openPage(page: Page, animation: string) {
     this.navCtrl.push(
-      ChatPage,
+      page,
       ModalComponent.owner,
       {
         animate: true,
-        animation: "transition-ios"
+        animation: animation
       });
   }
 }

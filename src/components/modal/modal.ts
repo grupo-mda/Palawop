@@ -19,7 +19,7 @@ import {AuthProvider} from "../../providers/auth/auth";
 export class ModalComponent {
 
   product      : any;
-  favButton    = false;
+  profileButton    = false;
   chatButton   = false;
   static owner : any;
   userLogged   : boolean;
@@ -34,7 +34,7 @@ export class ModalComponent {
       ModalComponent.owner = _.assign(value, {
         'id': this.product.vendor
       }));
-    events.subscribe('favButton', (status) => this.favButton = status);
+    events.subscribe('profileButton', (status) => this.profileButton = status);
     events.subscribe('chatButton', (status) => this.chatButton = status);
   }
 
