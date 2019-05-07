@@ -38,6 +38,7 @@ import { UserSettingsProvider } from '../providers/user-settings/user-settings';
 import {IonicStorageModule} from "@ionic/storage";
 import { MessageServiceProvider } from '../providers/message-service/message-service';
 import {StarRatingModule} from "ionic3-star-rating";
+import {PopOverComponent} from "../components/pop-over/pop-over";
 
 
 // import * as admin from 'firebase-admin';
@@ -94,7 +95,8 @@ import {StarRatingModule} from "ionic3-star-rating";
     NewStockPage,
     ManageUserStockPage,
     ChatListPage,
-    ChatPage
+    ChatPage,
+    PopOverComponent
   ],
   providers: [
     StatusBar,

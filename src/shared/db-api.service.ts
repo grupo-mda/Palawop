@@ -80,7 +80,7 @@ export class DbApiService{
   }
 
 
-  pushItem(name,description,category,id,price){
+  pushItem(name,description,category,id,price,img){
     firebase
       .database()
       .ref()
@@ -93,7 +93,8 @@ export class DbApiService{
         price: price,
         description: description,
         date :firebase.database.ServerValue.TIMESTAMP,
-        vendor : firebase.auth().currentUser.uid
+        vendor : firebase.auth().currentUser.uid,
+        img: img
       })
   }
 

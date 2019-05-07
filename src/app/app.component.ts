@@ -31,9 +31,11 @@ export class MyApp {
               ) {
     platform.ready().then(() => {
 
+      statusBar.overlaysWebView(false);
       statusBar.styleDefault();
-      splashScreen.hide();
+      statusBar.backgroundColorByHexString("#fff");
 
+      splashScreen.hide();
     });
 
     console.log('ionViewDidLoad SplashPage');
