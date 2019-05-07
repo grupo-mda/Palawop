@@ -10,6 +10,7 @@ import {ChatPage} from "../chat/chat";
 import {PopOverComponent} from "../../components/pop-over/pop-over";
 import {ManageUserStockPage} from "../manage-user-stock/manage-user-stock";
 import {ManageStockPage} from "../manage-stock/manage-stock";
+import {ManageUsersPage} from "../manage-users/manage-users";
 
 /**
  * Generated class for the ProfilePage page.
@@ -77,6 +78,7 @@ export class ProfilePage {
         let page = this.user.admin ? ManageStockPage : ManageUserStockPage;
         this.navCtrl.push(page, this.user);
       }
+      if (action == 'users')  this.navCtrl.push(ManageUsersPage, this.user);
     })
   }
 }
