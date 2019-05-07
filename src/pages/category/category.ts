@@ -3,6 +3,9 @@ import { IonicPage, NavController, NavParams, LoadingController, ModalController
 import { DbApiService } from '../../shared/db-api.service';
 import { ProductDetailPage } from '../product-detail/product-detail';
 import { ModalComponent } from '../../components/modal/modal';
+import { ProfilePage } from '../profile/profile';
+import { ChatPage } from '../chat/chat';
+import { Page } from 'ionic-angular/umd/navigation/nav-util';
 
 /**
  * Generated class for the CategoryPage page.
@@ -38,7 +41,7 @@ export class CategoryPage {
       this.dbapi.getStock()
         .subscribe(data => {
           for ( let i in data) {
-            if(data[i].category ==this.category.name|| data[i].category.includes(this.category.name)){
+            if(data[i].category.includes(this.category.name)){
               this.productCategory.push(data[i]);
               console.log(this.productCategory);
             }
@@ -70,6 +73,34 @@ export class CategoryPage {
     
     myModal.present();
   
+  }
+  touchend(event) {
+
+    const profileButton = document.getElementById("profile-button");
+    const chatButton = document.getElementById("chat-button");
+
+    const hoverElement = document.elementFromPoint(
+      event.changedTouches[0].pageX,
+      event.changedTouches[0].pageY
+    );
+
+    if (profileButton != null && (hoverElement == profileButton || hoverElement == profileButton.querySelector("ion-icon"))) {
+      this.openPage(ProfilePage, 'wp-transition');
+    }
+
+    if (chatButton != null && (hoverElement == chatButton || hoverElement == chatButton.querySelector("ion-icon"))) {
+      this.openPage(ChatPage, 'ios-transition');
+    }
+  }
+  
+  private openPage(page: Page, animation: string) {
+    this.navCtrl.push(
+      page,
+      ModalComponent.owner,
+      {
+        animate: true,
+        animation: animation
+      });
   }
 
 }
