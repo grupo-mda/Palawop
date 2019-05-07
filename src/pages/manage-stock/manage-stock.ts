@@ -41,10 +41,13 @@ export class ManageStockPage {
       .then((snapshot) => {
         for (let k in snapshot) {
           data.push({
-            id: k,
-            name: snapshot[k].name,
-            description: snapshot[k].description,
-            category: snapshot[k].category
+            id          : k,
+            name        : snapshot[k].name,
+            description : snapshot[k].description,
+            price       : snapshot[k].price,
+            img         : snapshot[k].img,
+            vendor      : snapshot[k].vendor,
+            category    : snapshot[k].category,
           })
         }
         this.stock_data = data;

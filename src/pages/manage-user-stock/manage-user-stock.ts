@@ -47,7 +47,7 @@ export class ManageUserStockPage {
             price       : snapshot[k].price,
             img         : snapshot[k].img,
             vendor      : snapshot[k].vendor,
-            category: snapshot[k].category,
+            category    : snapshot[k].category,
 
           })
         }
