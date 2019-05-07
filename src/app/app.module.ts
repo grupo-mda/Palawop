@@ -98,7 +98,7 @@ import {PopOverComponent} from "../components/pop-over/pop-over";
     ManageUserStockPage,
     ChatListPage,
     ChatPage,
-    PageFilterPage
+    PageFilterPage,
     PopOverComponent
   ],
   providers: [

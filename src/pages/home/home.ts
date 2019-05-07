@@ -38,7 +38,7 @@ export class HomePage {
               public toast: ToastController) {
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     console.log('ionViewDidLoad stockPage');
     console.log(this.stock);
     let loader = this.loadingController.create({
@@ -51,6 +51,7 @@ export class HomePage {
 
     this.dbapi.getListOf("products")
       .then((snapshot) => {
+        this.stock=[];
         for (let k in snapshot) {
           this.stock.push({
             id          : k,

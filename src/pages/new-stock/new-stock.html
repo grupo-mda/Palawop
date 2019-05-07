@@ -30,7 +30,7 @@
         <ion-label stacked>Category:</ion-label>
         <ion-select formControlName="category" [(ngModel)]=item.category  multiple="true">
           <ion-option *ngFor="let cat of categories">
-            {{cat?.name}}
+            {{cat?.value}}
           </ion-option>
         </ion-select>
       </ion-item>
