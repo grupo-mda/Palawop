@@ -38,6 +38,7 @@ import { UserSettingsProvider } from '../providers/user-settings/user-settings';
 import {IonicStorageModule} from "@ionic/storage";
 import { MessageServiceProvider } from '../providers/message-service/message-service';
 import {StarRatingModule} from "ionic3-star-rating";
+import {PageFilterPage} from "../pages/page-filter/page-filter";
 import {PopOverComponent} from "../components/pop-over/pop-over";
 
 
@@ -61,7 +62,8 @@ import {PopOverComponent} from "../components/pop-over/pop-over";
     NewStockPage,
     ManageUserStockPage,
     ChatListPage,
-    ChatPage
+    ChatPage,
+    PageFilterPage
   ],
   imports: [
     BrowserModule,
@@ -96,6 +98,7 @@ import {PopOverComponent} from "../components/pop-over/pop-over";
     ManageUserStockPage,
     ChatListPage,
     ChatPage,
+    PageFilterPage
     PopOverComponent
   ],
   providers: [

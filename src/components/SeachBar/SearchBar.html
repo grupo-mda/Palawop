@@ -13,8 +13,8 @@
       <ion-searchbar [(ngModel)]="searchQuery"
       (onclick)="printList()"
       (ionInput)="getItems($event)"
-      [showCancelButton]="shouldShowCancel"
       [autocomplete]="on"
+      (keyup.enter)="goPageFilter()"
       >
       </ion-searchbar>
   </ion-col>
@@ -24,12 +24,9 @@
 
 </ion-row>
 
-
-
-
   <ion-list *ngIf="list">
-    <ion-item *ngFor="let item of items">
-      {{ item }}
+    <ion-item *ngFor="let item of items" (click)=goProduct(item)>
+      {{ item.name }}
     </ion-item>
   
   </ion-list>
