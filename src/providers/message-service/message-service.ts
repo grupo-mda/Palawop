@@ -35,7 +35,6 @@ export class MessageServiceProvider {
 
     // evitar multiples suscripciones
     if (userChatsSubscription && MessageServiceProvider.chatSubscription == null) {
-      console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaa')
       MessageServiceProvider.chatSubscription = userChatsSubscription
         .subscribe(data => {
             data.then(chat => {
