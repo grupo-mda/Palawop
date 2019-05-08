@@ -20,7 +20,7 @@ import {ProfilePage} from "../profile/profile";
  */
 
 @Component({
-  selector: 'page-chat',
+  selector:    'page-chat',
   templateUrl: 'chat.html'
 })
 export class ChatPage implements AfterViewChecked {
@@ -111,6 +111,7 @@ export class ChatPage implements AfterViewChecked {
     this.messagesApi.getChat(this.anotherUserId);
   }
 
+
   ionViewWillEnter() {
     if (this.navCtrl.getPrevious().name != ChatListPage.name) {
       let tabs = document.querySelectorAll('.tabbar');
@@ -137,17 +138,6 @@ export class ChatPage implements AfterViewChecked {
 
 
   ionViewDidLeave() {
-    // if (this.navCtrl.getPrevious().name != ChatListPage.name) {
-    //   let tabs = document.querySelectorAll('.tabbar');
-    //   if (tabs !== null) {
-    //     Object.keys(tabs).map((key) => {
-    //       tabs[key].style.display = 'flex';
-    //       tabs[key].style.transform = 'translateY(0)';
-    //     });
-    //   }
-    // }
-
-
     this.sendWritingStatus(false);
     try {
       this.startWriting.unsubscribe();

@@ -7,8 +7,8 @@ import {
   NavParams,
   ToastController
 } from 'ionic-angular';
-import {DbApiService} from "../../shared/db-api.service";
-import {ChatPage} from "../chat/chat";
+import { DbApiService } from "../../shared/db-api.service";
+import { ChatPage } from "../chat/chat";
 // import {UserDetailPage} from "../user-detail/user-detail";
 import * as _ from 'lodash'
 import {MessageServiceProvider} from "../../providers/message-service/message-service";
@@ -51,8 +51,6 @@ export class ChatListPage {
         this.chats = MessageServiceProvider.chats;
       }
     );
-
-
   }
 
   ionViewWillLeave() {

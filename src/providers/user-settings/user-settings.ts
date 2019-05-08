@@ -1,38 +1,43 @@
 import { Injectable } from '@angular/core';
-import {Storage} from "@ionic/storage";
+import { Storage } from "@ionic/storage";
 import * as _ from 'lodash';
 
 @Injectable()
 export class UserSettingsProvider {
 
+  
   constructor(private storage: Storage) {
     console.log('Hello UserSettingsProvider Provider');
   }
+
 
   login(user: any) {
     this.storage.set('user', user);
   }
 
+
   logout() {
     this.storage.clear();
   }
+
 
   async getCurrentUser() {
     return this.storage.get('user');
   }
 
+
   async getChatList() {
     let chatList = [];
     await this.storage.forEach((value, key, index) => {
-      if (key.startsWith('preview:')) {
-        chatList.push(value)
-      }
+      if (key.startsWith('preview:')) chatList.push(value)
     });
 
     return _.orderBy(
       chatList,
-      ['lastMsgTimestamp'], ['desc']);
+      ['lastMsgTimestamp'],
+      ['desc']);
   }
+
 
   async getChat(otherUserId: string) {
     let chat = [];
