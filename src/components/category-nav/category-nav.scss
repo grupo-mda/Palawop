@@ -6,9 +6,9 @@ category-nav {
     z-index: 1;
     opacity: 1;
     transition: z-index 0s .4s, top .4s;
-    background: #2980B9;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #FFFFFF00, #6DD5FA77, #2980B9aa);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #FFFFFF00, #6DD5FA77, #2980B9aa); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    //background: #2980B9;  /* fallback for old browsers */
+    //background: -webkit-linear-gradient(to top, #FFFFFF00, #6DD5FA77, #2980B9aa);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(109, 213, 250, 0.47), rgba(41, 128, 185, 0.67)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
     button {
