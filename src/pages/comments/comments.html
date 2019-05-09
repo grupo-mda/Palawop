@@ -1,0 +1,33 @@
+<!--
+  Generated template for the CommentsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{user?.name}}'s comments</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <div *ngFor="let item of user_comments">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title><p class="comment-title">{{item.title}}</p></ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <p class="comment-text">{{item.comment}}</p>
+        </ion-card-content>
+      </ion-card>
+
+    </div>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button (click)="goToForm()" color="dark" ion-fab><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

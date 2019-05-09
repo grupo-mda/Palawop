@@ -122,6 +122,22 @@ export class DbApiService{
       .then(() => this.events.publish('newUserData'));
   }
 
+  pushComment(title,comment, id_to){
+    let commentId = firebase.database().ref().child(`/comments/${id_to}`).push().key;
+
+    firebase
+      .database()
+      .ref()
+      .child("comments")
+      .child(id_to)
+      .child(commentId)
+      .set({
+        title: title,
+        comment: comment,
+        date :firebase.database.ServerValue.TIMESTAMP,
+        id_from : firebase.auth().currentUser.uid
+      })
+  }
 
   deleteUser(user_data: any) {
     this.fdb.list(`/users/${user_data.id}`).remove();
@@ -297,4 +313,19 @@ export class DbApiService{
       .remove();
     this.settings.removeChat(id);
   }
+/**
+  getUserComments(): Observable<any> {
+    return this.fdb.list('/commentarios/').valueChanges();
+  }
+ */
+
+ getCommentOfUser(user_id) {
+    return firebase.database()
+      .ref(`comments/${user_id}`)
+    //  .orderByChild(key)
+    //    .equalTo(user_id)
+      .once('value')
+      .then((snapshot) => { return snapshot.val()});
+  }
+
 }

@@ -1,0 +1,10 @@
+<!-- Generated template for the ModalFormComponent component -->
+<form [formGroup]="commentForm" (ngSubmit)="saveComment()">
+  <ion-item>
+    <ion-input placeholder="Título" type="text" formControlName="title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-textarea placeholder="Comentario" formControlName="comment"></ion-textarea>
+  </ion-item>
+  <button ion-button block type="submit">Subir comentario</button>
+</form>

@@ -40,6 +40,7 @@ import { MessageServiceProvider } from '../providers/message-service/message-ser
 import {StarRatingModule} from "ionic3-star-rating";
 import {PageFilterPage} from "../pages/page-filter/page-filter";
 import {PopOverComponent} from "../components/pop-over/pop-over";
+import {CommentsPage} from "../pages/comments/comments";
 
 
 // import * as admin from 'firebase-admin';
@@ -63,7 +64,7 @@ import {PopOverComponent} from "../components/pop-over/pop-over";
     ManageUserStockPage,
     ChatListPage,
     ChatPage,
-    PageFilterPage
+    CommentsPage
   ],
   imports: [
     BrowserModule,
@@ -98,8 +99,7 @@ import {PopOverComponent} from "../components/pop-over/pop-over";
     ManageUserStockPage,
     ChatListPage,
     ChatPage,
-    PageFilterPage,
-    PopOverComponent
+    CommentsPage
   ],
   providers: [
     StatusBar,

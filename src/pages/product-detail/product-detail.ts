@@ -4,6 +4,7 @@ import {DbApiService} from '../../shared/db-api.service';
 import {LoadingController} from 'ionic-angular';
 import { ProfilePage } from "../profile/profile";
 import {StarRatingModule} from "ionic3-star-rating";
+import {CommentsPage} from "../comments/comments";
 
 /**
  * Generated class for the ProductDetailPage page.
@@ -39,4 +40,6 @@ export class ProductDetailPage {
   viewAuthor(){
     this.navCtrl.push(ProfilePage, this.author);
   }
+
+
 }

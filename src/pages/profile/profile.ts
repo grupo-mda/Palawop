@@ -11,6 +11,8 @@ import {PopOverComponent} from "../../components/pop-over/pop-over";
 import {ManageUserStockPage} from "../manage-user-stock/manage-user-stock";
 import {ManageStockPage} from "../manage-stock/manage-stock";
 import {ManageUsersPage} from "../manage-users/manage-users";
+import {CommentsPage} from "../comments/comments";
+import {user} from "firebase-functions/lib/providers/auth";
 
 /**
  * Generated class for the ProfilePage page.
@@ -80,6 +82,9 @@ export class ProfilePage {
       }
       if (action == 'users')  this.navCtrl.push(ManageUsersPage, this.user);
     })
+  }
+  goToComments() {
+    this.navCtrl.push(CommentsPage, this.user);
   }
 }
 
