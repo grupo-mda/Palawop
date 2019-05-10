@@ -4,6 +4,7 @@ import {ModalFormComponent} from '../../components/modal-form/modal-form';
 import {DbApiService} from "../../shared/db-api.service";
 import * as _ from "lodash";
 import {user} from "firebase-functions/lib/providers/auth";
+import {AuthProvider} from '../../providers/auth/auth';
 
 /**
  * Generated class for the CommentsPage page.
@@ -22,6 +23,7 @@ import {user} from "firebase-functions/lib/providers/auth";
 export class CommentsPage {
   private user_comments = [];
   private user:any;
+  private iAm: boolean;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -29,11 +31,16 @@ export class CommentsPage {
               public loadingController: LoadingController,
               public dbapi: DbApiService,
               ) {
-    this.user=this.navParams.data;
+    this.user=navParams.data;
+    this.iAm = _.size(this.user) == 0;
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     console.log('ionViewDidLoad CommentsPage');
+
+    if (this.iAm) {
+      this.user = AuthProvider.currentUser;
+    }
     let loader = this.loadingController.create({
       content: 'Obteniendo comentarios',
       spinner: 'dots'
@@ -51,6 +58,7 @@ export class CommentsPage {
             id_from   : snapshot[k].id_from,
             title     : snapshot[k].title,
             comment   : snapshot[k].comment,
+            date      : snapshot[k].date
           })
         }
       })

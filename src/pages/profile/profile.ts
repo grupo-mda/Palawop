@@ -71,8 +71,6 @@ export class ProfilePage {
 
     popover.present({ev: ev});
 
-    console.log(this.user)
-
     popover.onDidDismiss(action => {
       if (action == 'close') this.signOut();
       if (action == 'edit')  this.navCtrl.push(ManageProfilePage, this.user);

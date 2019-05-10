@@ -6,8 +6,6 @@ page-profile {
     ion-card {
       margin: 0 !important;
       width: 100% !important;
-      box-shadow: none !important;
-      overflow: visible;
 
       .profilePicture, .profilePicture * {
         margin: 0 !important;
@@ -22,16 +20,7 @@ page-profile {
       }
 
       .userInfo {
-        transform: translateY(-30px);
-
-        &.myProfile {
-          transform: translateY(26px);
-        }
-      }
-
-      .signOutBtn {
-          transform: translateY(36px);
-        margin-bottom: 30px;
+        transform: translateY(-40px);
       }
     }
   }

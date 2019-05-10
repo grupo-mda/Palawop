@@ -20,11 +20,15 @@ page-home {
     margin-top: 56px !important;
 
     ion-col {
-
+      img{
+        width: 167.5px;
+        height: 167.5px;
+      }
       ion-card {
         border-radius: 10px !important;
         margin: 0 !important;
         width: 100% !important;
+        height: 223px !important;
 
         ion-card-content {
           padding: 5px 16px;

@@ -24,9 +24,6 @@
 
     <ion-item class="profilePicture" text-wrap>
       <ion-label>
-        <!--        <cl-image *ngIf="user?.photo != null" public-id="{{user?.photo}}">-->
-        <!--          <cl-transformation height="150" width="150"></cl-transformation>-->
-        <!--        </cl-image>-->
         <cl-image public-id="samples/people/bicycle.jpg">
           <cl-transformation gravity="face" height="500" width="500" crop="thumb">
           </cl-transformation>
@@ -64,26 +61,14 @@
       </ion-item>
     </div>
 
-<!--    <button-->
-<!--      (click)="signOut()"-->
-<!--      class="signOutBtn"-->
-<!--      ion-button-->
-<!--      round-->
-<!--      color="danger"-->
-<!--      *ngIf="iAm">-->
-<!--      &lt;!&ndash;        <ion-icon name="close"></ion-icon>&ndash;&gt;-->
-<!--      Sign Out-->
-<!--    </button>-->
+    <button class="comments"
+            (click)="goToComments()"
+            ion-button block
+            color="dark">
+      Comments
+    </button>
 
   </ion-card>
-  <button
-    ion-button
-    small
-    block
-    color="dark"
-    (click)="goToComments()">
-    Comentarios
-  </button>
 </ion-content>
 
 

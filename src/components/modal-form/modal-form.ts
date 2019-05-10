@@ -46,4 +46,7 @@ export class ModalFormComponent {
       comment: ['', Validators.required],
     });
   }
+  closeModal(){
+    this.navCtrl.pop();
+  }
 }

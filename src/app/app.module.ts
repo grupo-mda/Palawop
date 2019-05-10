@@ -64,7 +64,8 @@ import {CommentsPage} from "../pages/comments/comments";
     ManageUserStockPage,
     ChatListPage,
     ChatPage,
-    CommentsPage
+    CommentsPage,
+    PageFilterPage
   ],
   imports: [
     BrowserModule,
@@ -99,7 +100,9 @@ import {CommentsPage} from "../pages/comments/comments";
     ManageUserStockPage,
     ChatListPage,
     ChatPage,
-    CommentsPage
+    CommentsPage,
+    PopOverComponent,
+    PageFilterPage
   ],
   providers: [
     StatusBar,

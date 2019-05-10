@@ -10,7 +10,32 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding *ngIf="user_comments">
+  <ion-card *ngFor="let opinion of user_comments">
+    <ion-item text-wrap>
+      <ion-label> <strong>From: </strong>
+        {{opinion?.title}}
+      </ion-label>
+    </ion-item>
+    <ion-item text-wrap>
+      <ion-label> <strong>Opinion: </strong>
+        {{opinion?.comment}}
+      </ion-label>
+    </ion-item>
+    <ion-item text-wrap>
+      <ion-label color="gray" text-right>
+        {{opinion?.date | date: 'dd MMM. yyyy'}}
+      </ion-label>
+    </ion-item>
+  </ion-card>
+<!--
+  <ion-fab *ngIf="userLoggedIn && !iAm" bottom right>-->
+    <ion-fab  *ngIf="!iAm" bottom right>
+    <button  (click)="goToForm()" color="dark" ion-fab><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>
+
+<!--<ion-content padding>
 
   <ion-list>
     <div *ngFor="let item of user_comments">
@@ -30,4 +55,4 @@
   <ion-fab bottom right>
     <button (click)="goToForm()" color="dark" ion-fab><ion-icon name="add"></ion-icon></button>
   </ion-fab>
-</ion-content>
+</ion-content>-->

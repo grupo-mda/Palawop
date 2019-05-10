@@ -7,4 +7,8 @@
     <ion-textarea placeholder="Comentario" formControlName="comment"></ion-textarea>
   </ion-item>
   <button ion-button block type="submit">Subir comentario</button>
+
 </form>
+<ion-fab  bottom center>
+  <button (click)="closeModal()" color="blue" ion-fab><ion-icon name="close"></ion-icon></button>
+</ion-fab>

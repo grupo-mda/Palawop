@@ -26,7 +26,7 @@
             (touchend)="touchend($event)"
           >
             <cl-image *ngIf="column?.img != null" public-id="{{column?.img}}">
-              <cl-transformation height="150" width="150" ></cl-transformation>
+              <cl-transformation crop="fit"></cl-transformation>
             </cl-image>
 
             <ion-card-content>

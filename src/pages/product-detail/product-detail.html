@@ -4,12 +4,12 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-card>
-    <ion-item text-wrap>
+    <ion-item class="profilePicture" text-wrap>
       <ion-label>
         <cl-image *ngIf="product?.img != null" public-id="{{product?.img}}">
-          <cl-transformation height="150" width="150" ></cl-transformation>
+          <cl-transformation crop="fit"></cl-transformation>
         </cl-image>
       </ion-label>
     </ion-item>
@@ -18,20 +18,11 @@
         {{product.name}}
       </ion-label>
     </ion-item>
-
-    <ion-item text-wrap>
-      <ion-label> <strong>Vendor: </strong>
-        <button (click)="viewAuthor(author)">{{author?.name}}</button>
-      </ion-label>
-    </ion-item>
-
     <ion-item text-wrap>
       <ion-label> <strong>Category: </strong>
         {{product.category}}
-
       </ion-label>
     </ion-item>
-
     <ion-item text-wrap>
       <ion-label> <strong>Description: </strong>
         {{product.description}}
@@ -43,15 +34,12 @@
       </ion-label>
     </ion-item>
     <ion-item></ion-item>
+    <button class="comments"
+            (click)="viewAuthor(author)"
+            ion-button block
+            color="dark">
+      {{author?.name}} Profile´s
+    </button>
   </ion-card>
-<!--
-  <ionic3-star-rating
-    activeIcon = "ios-star"
-    defaultIcon = "ios-star-outline"
-    activeColor = "#488aff"
-    defaultColor = "#565252"
-    readonly="false"
-    [rating]="3">
-  </ionic3-star-rating>
-  -->
+
 </ion-content>
