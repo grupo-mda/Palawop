@@ -29,6 +29,7 @@ import {user} from "firebase-functions/lib/providers/auth";
 export class ProfilePage {
   private user: any;
   private iAm: boolean;
+  private userLogged: boolean;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -46,11 +47,12 @@ export class ProfilePage {
   }
 
   ionViewWillEnter() {
-    if (this.iAm) {
-      this.user = AuthProvider.currentUser;
-    }
+    this.userLogged = AuthProvider.currentUser != null;
+    if (this.iAm) this.user = AuthProvider.currentUser;
+    const currentUser: any = AuthProvider.currentUser;
+    if (currentUser != null) this.iAm = this.user.id === currentUser.id;
 
-    console.log('ionViewDidLoad ProfilePage');
+    console.log('ionViewDidLoad ProfilePage', this.user);
   }
 
   signOut() {
@@ -82,7 +84,8 @@ export class ProfilePage {
     })
   }
   goToComments() {
-    this.navCtrl.push(CommentsPage, this.user);
+    if (this.iAm) this.navCtrl.push(CommentsPage);
+    else this.navCtrl.push(CommentsPage, this.user);
   }
 }
 

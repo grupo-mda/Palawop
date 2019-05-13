@@ -24,6 +24,7 @@ export class CommentsPage {
   private user_comments = [];
   private user:any;
   private iAm: boolean;
+  private userLogged: boolean;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -31,11 +32,30 @@ export class CommentsPage {
               public loadingController: LoadingController,
               public dbapi: DbApiService,
               ) {
-    this.user=navParams.data;
+    this.user = navParams.data;
     this.iAm = _.size(this.user) == 0;
   }
 
   ionViewWillEnter() {
+    this.userLogged = AuthProvider.currentUser != null;
+    if (this.iAm) this.user = AuthProvider.currentUser;
+    const currentUser: any = AuthProvider.currentUser;
+    if (currentUser != null) this.iAm = this.user.id === currentUser.id;
+    this.loadContent();
+  }
+
+  goToForm() {
+    console.log("añadir comentario");
+    console.log(this.user);
+    const myModal = this.modalController.create(
+      ModalFormComponent,{user_id: this.user.id}
+    );
+
+    myModal.onDidDismiss(() => this.loadContent());
+    myModal.present();
+  }
+
+  private loadContent() {
     console.log('ionViewDidLoad CommentsPage');
 
     if (this.iAm) {
@@ -47,7 +67,7 @@ export class CommentsPage {
     });
     loader.present();
 
- //   this.dbapi.getCommentOfUser(this.user.id);
+    //   this.dbapi.getCommentOfUser(this.user.id);
 
     this.dbapi.getCommentOfUser(this.user.id)
       .then((snapshot) => {
@@ -65,14 +85,5 @@ export class CommentsPage {
 
       .then(() => loader.dismiss());
 
-  }
-
-  goToForm() {
-    console.log("añadir comentario");
-    console.log(this.user);
-    const myModal = this.modalController.create(
-      ModalFormComponent,{user_id: this.user.id}
-    )
-    myModal.present();
   }
 }

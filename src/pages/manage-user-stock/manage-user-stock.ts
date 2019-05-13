@@ -30,7 +30,7 @@ export class ManageUserStockPage {
 
   }
 
-  ionViewDidEnter() {
+  ionViewWillEnter() {
     console.log('ionViewDidLoad ManageUserStockPage');
 
     this.loading = this.loadingCtrl.create();
@@ -54,6 +54,7 @@ export class ManageUserStockPage {
       })
       .then(() => this.loading.dismiss());
   }
+
 
   itemDelete(product){
     const confirm = this.alertCtrl.create({

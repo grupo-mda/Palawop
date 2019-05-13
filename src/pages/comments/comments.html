@@ -13,7 +13,7 @@
 <ion-content padding *ngIf="user_comments">
   <ion-card *ngFor="let opinion of user_comments">
     <ion-item text-wrap>
-      <ion-label> <strong>From: </strong>
+      <ion-label> <strong>Title: </strong>
         {{opinion?.title}}
       </ion-label>
     </ion-item>
@@ -30,8 +30,10 @@
   </ion-card>
 <!--
   <ion-fab *ngIf="userLoggedIn && !iAm" bottom right>-->
-    <ion-fab  *ngIf="!iAm" bottom right>
-    <button  (click)="goToForm()" color="dark" ion-fab><ion-icon name="add"></ion-icon></button>
+  <ion-fab *ngIf="userLogged && !iAm" bottom right>
+    <button (click)="goToForm()" color="dark" ion-fab>
+      <ion-icon name="add"></ion-icon>
+    </button>
   </ion-fab>
 </ion-content>
 

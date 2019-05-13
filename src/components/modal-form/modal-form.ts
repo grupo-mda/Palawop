@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DbApiService} from '../../shared/db-api.service';
-import {NavParams, NavController} from "ionic-angular";
+import {NavParams, NavController, LoadingController} from "ionic-angular";
 
 /**
  * Generated class for the ModalFormComponent component.
@@ -23,6 +23,7 @@ export class ModalFormComponent {
   constructor(public dbapi: DbApiService,
               public formBuilder: FormBuilder,
               public navParams: NavParams,
+              public loadingController: LoadingController,
               public navCtrl: NavController) {
     console.log('Hello ModalFormComponent Component');
     this.text = 'Hello World';
@@ -32,12 +33,22 @@ export class ModalFormComponent {
   }
 
   saveComment() {
-    this.dbapi.pushComment(this.commentForm.value.title,
-      this.commentForm.value.comment,this.id_user
-    );
-    console.log("se envia el formulario");
-    this.navCtrl.pop();
 
+    let loader = this.loadingController.create({
+      content: 'Obteniendo comentarios',
+      spinner: 'dots'
+    });
+    loader.present();
+
+    this.dbapi.pushComment(this.commentForm.value.title,
+      this.commentForm.value.comment, this.id_user
+    )
+      .then(() => {
+        this.closeModal();
+        loader.dismiss();
+      });
+
+    console.log("se envia el formulario");
   }
 
   private createForm() {

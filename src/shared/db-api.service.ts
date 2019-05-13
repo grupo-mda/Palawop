@@ -63,7 +63,7 @@ export class DbApiService{
 
   uploadItem(name: any, description: any, category: any, price: any,img: any) {
     let key = firebase.database().ref().child('products').push().key;
-    firebase
+    return firebase
       .database()
       .ref()
       .child('products')
@@ -125,7 +125,7 @@ export class DbApiService{
   pushComment(title,comment, id_to){
     let commentId = firebase.database().ref().child(`/comments/${id_to}`).push().key;
 
-    firebase
+    return firebase
       .database()
       .ref()
       .child("comments")

@@ -77,18 +77,20 @@ export class NewStockPage {
         this.productForm.value.category.toString().split("\n").join("").replace(/\s/g, "").split(","),
         this.productForm.value.price,
         this.public_id
-      );
+      )
+        .then(() => this.backToManage());
     };
     this.uploader.onErrorItem = function (fileItem, response, status, headers) {
       console.info('onErrorItem', fileItem, response, status, headers);
+      this.backToManage();
     };
-    this.loading.dismiss();
 
 
 
   }
 
   backToManage(){
+    this.loading.dismiss();
     this.navCtrl.pop();
   }
 
